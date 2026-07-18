@@ -1,0 +1,118 @@
+{
+  "$schema": "catalog-v2.schema.json",
+  "catalogVersion": 2,
+  "release": "2026.07",
+  "reviewed": "2026-07-18",
+  "sources": [
+    {
+      "id": "arch",
+      "kind": "pacman",
+      "trust": "distribution",
+      "name": { "en": "Official Arch repositories", "zh_CN": "Arch 官方仓库" }
+    }
+  ],
+  "categories": [
+    { "id": "productivity", "name": { "en": "Productivity", "zh_CN": "效率工具" } },
+    { "id": "development", "name": { "en": "Development", "zh_CN": "开发工具" } },
+    { "id": "ai", "name": { "en": "AI and Machine Learning", "zh_CN": "人工智能与机器学习" } },
+    { "id": "data-science", "name": { "en": "Data Science", "zh_CN": "数据科学" } },
+    { "id": "scientific", "name": { "en": "Scientific Computing", "zh_CN": "科学计算" } },
+    { "id": "bioinformatics", "name": { "en": "Bioinformatics", "zh_CN": "生物信息学" } },
+    { "id": "engineering", "name": { "en": "Engineering", "zh_CN": "工程计算" } },
+    { "id": "design", "name": { "en": "Design", "zh_CN": "设计创作" } },
+    { "id": "media", "name": { "en": "Media", "zh_CN": "媒体处理" } },
+    { "id": "communication", "name": { "en": "Communication", "zh_CN": "通信协作" } },
+    { "id": "containers", "name": { "en": "Containers", "zh_CN": "容器工具" } },
+    { "id": "system", "name": { "en": "System Tools", "zh_CN": "系统工具" } },
+    { "id": "documents", "name": { "en": "Documents", "zh_CN": "文档阅读" } },
+    { "id": "education", "name": { "en": "Education", "zh_CN": "教育学习" } },
+    { "id": "office", "name": { "en": "Office", "zh_CN": "办公套件" } },
+    { "id": "other", "name": { "en": "Other", "zh_CN": "其他" } }
+  ],
+  "profiles": [
+    {
+      "id": "productivity",
+      "name": { "en": "Productivity workstation", "zh_CN": "高效办公工作站" },
+      "description": { "en": "Office, mail, and password management.", "zh_CN": "办公、邮件与密码管理。" },
+      "categories": ["productivity", "office", "communication"],
+      "source": "arch",
+      "packages": ["libreoffice-fresh", "thunderbird", "keepassxc"],
+      "installer": true,
+      "availability": { "architectures": ["x86_64"], "networkRequired": true },
+      "review": { "status": "reviewed", "date": "2026-07-18" },
+      "presentation": { "recommended": true, "order": 10 }
+    },
+    {
+      "id": "creator",
+      "name": { "en": "Creative studio", "zh_CN": "创意工作室" },
+      "description": { "en": "Raster, vector, video, and streaming tools.", "zh_CN": "位图、矢量、视频与直播工具。" },
+      "categories": ["design", "media"],
+      "source": "arch",
+      "packages": ["krita", "gimp", "inkscape", "kdenlive", "obs-studio"],
+      "installer": true,
+      "availability": { "architectures": ["x86_64"], "networkRequired": true },
+      "review": { "status": "reviewed", "date": "2026-07-18" },
+      "presentation": { "recommended": false, "order": 20 }
+    },
+    {
+      "id": "developer",
+      "name": { "en": "Software development", "zh_CN": "软件开发环境" },
+      "description": { "en": "Compilers, editors, build tools, and major language runtimes.", "zh_CN": "编译器、编辑器、构建工具与主流语言运行时。" },
+      "categories": ["development"],
+      "source": "arch",
+      "packages": ["base-devel", "git", "cmake", "code", "rust", "go", "nodejs", "npm", "python", "python-pip"],
+      "installer": true,
+      "availability": { "architectures": ["x86_64"], "networkRequired": true },
+      "review": { "status": "reviewed", "date": "2026-07-18" },
+      "presentation": { "recommended": true, "order": 30 }
+    },
+    {
+      "id": "containers",
+      "name": { "en": "Container development", "zh_CN": "容器开发环境" },
+      "description": { "en": "Rootless containers and integrated development environments.", "zh_CN": "无根容器与集成式开发环境。" },
+      "categories": ["containers", "development"],
+      "source": "arch",
+      "packages": ["podman", "distrobox"],
+      "installer": true,
+      "availability": { "architectures": ["x86_64"], "networkRequired": true },
+      "review": { "status": "reviewed", "date": "2026-07-18" },
+      "presentation": { "recommended": true, "order": 40 }
+    },
+    {
+      "id": "ai",
+      "name": { "en": "AI and machine learning", "zh_CN": "人工智能与机器学习" },
+      "description": { "en": "Jupyter, PyTorch, and scikit-learn without vendor GPU stacks.", "zh_CN": "Jupyter、PyTorch 与 scikit-learn，不自动安装厂商 GPU 栈。" },
+      "categories": ["ai", "data-science"],
+      "source": "arch",
+      "packages": ["jupyterlab", "python-pytorch", "python-scikit-learn"],
+      "installer": true,
+      "availability": { "architectures": ["x86_64"], "networkRequired": true },
+      "review": { "status": "reviewed", "date": "2026-07-18" },
+      "presentation": { "recommended": false, "order": 50 }
+    },
+    {
+      "id": "science",
+      "name": { "en": "Scientific computing", "zh_CN": "科学计算环境" },
+      "description": { "en": "Numerical computing, visualization, statistics, and notebooks.", "zh_CN": "数值计算、可视化、统计分析与交互式笔记本。" },
+      "categories": ["scientific", "data-science", "engineering", "education"],
+      "source": "arch",
+      "packages": ["r", "octave", "gnuplot", "paraview", "jupyterlab", "python-numpy", "python-scipy", "python-matplotlib", "python-pandas"],
+      "installer": true,
+      "availability": { "architectures": ["x86_64"], "networkRequired": true },
+      "review": { "status": "reviewed", "date": "2026-07-18" },
+      "presentation": { "recommended": true, "order": 60 }
+    },
+    {
+      "id": "bioinformatics",
+      "name": { "en": "Bioinformatics runtime", "zh_CN": "生物信息运行环境" },
+      "description": { "en": "Apptainer for reproducible, reviewed workflow containers.", "zh_CN": "使用 Apptainer 运行可复现、经审核的工作流容器。" },
+      "categories": ["bioinformatics", "scientific", "containers"],
+      "source": "arch",
+      "packages": ["apptainer"],
+      "installer": true,
+      "availability": { "architectures": ["x86_64"], "networkRequired": true },
+      "review": { "status": "reviewed", "date": "2026-07-18" },
+      "presentation": { "recommended": false, "order": 70 }
+    }
+  ]
+}
