@@ -2,7 +2,7 @@
   "$schema": "catalog-v2.schema.json",
   "catalogVersion": 2,
   "release": "2026.07",
-  "reviewed": "2026-07-18",
+  "reviewed": "2026-07-19",
   "sources": [
     {
       "id": "arch",
@@ -113,6 +113,18 @@
       "availability": { "architectures": ["x86_64"], "networkRequired": true },
       "review": { "status": "reviewed", "date": "2026-07-18" },
       "presentation": { "recommended": false, "order": 70 }
+    },
+    {
+      "id": "media-playback",
+      "name": { "en": "Media playback", "zh_CN": "媒体播放" },
+      "description": { "en": "Install VLC after an explicit user choice.", "zh_CN": "由用户明确选择后安装 VLC。" },
+      "categories": ["media"],
+      "source": "arch",
+      "packages": ["vlc"],
+      "installer": false,
+      "availability": { "architectures": ["x86_64"], "networkRequired": true },
+      "review": { "status": "reviewed", "date": "2026-07-19" },
+      "presentation": { "recommended": false, "order": 80 }
     }
   ]
 }
