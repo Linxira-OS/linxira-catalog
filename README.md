@@ -6,11 +6,24 @@ Catalog v2 is consumed by Calamares, Linxira Welcome, `linxira-config`, Shelly
 recommendation links, and generated documentation. Package transactions remain
 the responsibility of Calamares, Shelly, or an audited transaction backend.
 
+The catalog now has two levels of selection:
+
+- `applications[]` is the canonical list of individually selectable software
+  items, grouped by category and source.
+- `profiles[]` is a curated preset that will expand to application IDs. During
+  the migration, legacy package arrays remain until Calamares and the installed
+  Package Center consume application selections directly.
+
+The same application IDs must be used by the installer, installed Package
+Center, receipts and future CLI commands. A profile must never become the only
+way to install software.
+
 ## Trust model
 
 - Every source declares its package ecosystem and trust class.
-- Every profile declares architecture and network requirements.
-- Every profile carries review status, review date, and presentation metadata.
+- Every application and profile declares architecture and network requirements.
+- Every application and profile carries review status, review date, and
+  presentation metadata.
 - Catalog data contains package identifiers, never executable command strings.
 - A profile ID is an allowlisted transaction request, not a shell fragment.
 
