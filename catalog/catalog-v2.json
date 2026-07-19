@@ -9,6 +9,18 @@
       "kind": "pacman",
       "trust": "distribution",
       "name": { "en": "Official Arch repositories", "zh_CN": "Arch 官方仓库" }
+    },
+    {
+      "id": "conda-forge",
+      "kind": "conda",
+      "trust": "verified-third-party",
+      "name": { "en": "conda-forge (Miniforge channel)", "zh_CN": "conda-forge（Miniforge channel）" }
+    },
+    {
+      "id": "bioconda",
+      "kind": "conda",
+      "trust": "verified-third-party",
+      "name": { "en": "Bioconda (Miniforge channel)", "zh_CN": "Bioconda（Miniforge channel）" }
     }
   ],
   "categories": [

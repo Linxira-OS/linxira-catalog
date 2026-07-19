@@ -21,6 +21,8 @@ way to install software.
 ## Trust model
 
 - Every source declares its package ecosystem and trust class.
+- Miniforge channels are explicit sources: `conda-forge` and `bioconda` are
+  verified third-party channels and are never enabled by the base system.
 - Every application and profile declares architecture and network requirements.
 - Every application and profile carries review status, review date, and
   presentation metadata.
