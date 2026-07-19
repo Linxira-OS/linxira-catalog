@@ -231,7 +231,7 @@
       "categories": ["package-management", "runtime", "development"],
       "source": "arch",
       "packages": ["nix"],
-      "installer": true,
+      "installer": false,
       "availability": { "architectures": ["x86_64"], "networkRequired": true },
       "review": { "status": "source-review", "date": "2026-07-19" },
       "presentation": { "recommended": false, "defaultSelected": false, "order": 160 }
@@ -255,7 +255,7 @@
       "categories": ["package-management", "runtime", "development"],
       "source": "arch",
       "packages": ["uv"],
-      "installer": true,
+      "installer": false,
       "availability": { "architectures": ["x86_64"], "networkRequired": true },
       "review": { "status": "source-review", "date": "2026-07-19" },
       "presentation": { "recommended": false, "defaultSelected": false, "order": 180 }
