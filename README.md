@@ -2,30 +2,43 @@
 
 Canonical, versioned software component metadata for Linxira OS.
 
-Catalog v2 is consumed by Calamares, Linxira Welcome, `linxira-config`, Shelly
-recommendation links, and generated documentation. Package transactions remain
-the responsibility of Calamares, Shelly, or an audited transaction backend.
+Catalog v3 is the canonical graph for new installer, Package Center and
+Bundle/Component Manager work. Catalog v2 remains unchanged as a compatibility
+input for existing consumers. Package transactions remain the responsibility
+of an audited planning and transaction backend.
 
-The catalog now has two levels of selection:
+Catalog v3 separates the two product surfaces while sharing stable IDs and one
+selection model:
 
-- `applications[]` is the canonical list of individually selectable software
-  items, grouped by category and source.
-- `profiles[]` is a curated preset that will expand to application IDs. During
-  the migration, legacy package arrays remain until Calamares and the installed
-  Package Center consume application selections directly.
+- `applications[]` contains individually selectable ordinary software.
+- `components[]` contains runtimes, tools and system capabilities.
+- `bundles[]` are expandable presets with an explicit `applications` or
+  `components` surface and `required`, `recommended` and `optional` references.
+  Bundles may nest other bundles and must form a DAG.
+- Every applications category has a same-ID category-root bundle whose members
+  exactly mirror the category children, in order, as optional references.
+- `operations[]` contains fixed, controlled action IDs. Catalog data never
+  contains executable shell strings.
+- `categories[]` owns each application, component or bundle through exactly one
+  `primaryCategory` and declares `multi`, `exclusive` or `bounded` selection.
+- Bundles declare `preset`; selecting one changes leaf defaults but does not
+  create an opaque installation artifact.
 
-The same application IDs must be used by the installer, installed Package
-Center, receipts and future CLI commands. A profile must never become the only
-way to install software.
+The same stable IDs must be used by the installer, installed managers, plans,
+receipts and CLI handoffs. Selection and receipts are keyed by leaf ID, not by a
+tree path. Catalog v2 `profiles[]` remain only for compatibility and must not be
+used as the v3 capability model.
 
 ## Trust model
 
 - Every source declares its package ecosystem and trust class.
 - Miniforge channels are explicit sources: `conda-forge` and `bioconda` are
   verified third-party channels and are never enabled by the base system.
-- Every application and profile declares architecture and network requirements.
-- Every application and profile carries review status, review date, and
-  presentation metadata.
+- Every leaf declares provider, artifact, scope, source, license, review,
+  availability, offline policy, size and dependency metadata.
+- External ecosystems are disabled by default and require explicit user opt-in.
+- Pending proprietary or third-party candidates remain in the optional review
+  channel and are never default-selected.
 - Catalog data contains package identifiers, never executable command strings.
 - A profile ID is an allowlisted transaction request, not a shell fragment.
 
@@ -33,7 +46,18 @@ way to install software.
 
 - `catalog/catalog-v2.json`: current reviewed catalog
 - `schema/catalog-v2.schema.json`: JSON Schema Draft 2020-12 contract
+- `catalog/catalog-v3.json`: application/component/bundle graph
+- `schema/catalog-v3.schema.json`: strict v3 JSON Schema Draft 2020-12 contract
+- `tests/test_catalog_v3.py`: schema and semantic validation
 
-Changes must pass schema validation plus semantic checks for unique IDs,
-category references, source references, package names, and installer/catalog
-chooser parity.
+Install development requirements and run:
+
+```sh
+python -m unittest discover -s tests -v
+```
+
+Validation covers the schema, category-root ID pairs and all other global IDs,
+references, primary-category ownership, bundle surfaces, nested bundle
+acyclicity, duplicate members, provider/source boundaries, the Firefox-only
+ordinary application default, review-channel policy, printing/scanning
+capability coverage and all selection modes.

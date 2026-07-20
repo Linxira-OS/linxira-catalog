@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://linxira.org/schema/catalog-v3.schema.json",
+  "title": "Linxira software and component catalog v3",
+  "type": "object",
+  "required": ["catalogVersion", "release", "reviewed", "sources", "categories", "applications", "components", "bundles", "operations"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "catalogVersion": { "const": 3 },
+    "release": { "type": "string", "pattern": "^[0-9]{4}\\.[0-9]{2}$" },
+    "reviewed": { "type": "string", "format": "date" },
+    "sources": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/source" } },
+    "categories": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/category" } },
+    "applications": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/application" } },
+    "components": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/component" } },
+    "bundles": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/bundle" } },
+    "operations": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/operation" } }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "localized": {
+      "type": "object",
+      "required": ["en", "zh_CN"],
+      "additionalProperties": false,
+      "properties": {
+        "en": { "type": "string", "minLength": 1 },
+        "zh_CN": { "type": "string", "minLength": 1 }
+      }
+    },
+    "selection": {
+      "type": "object",
+      "required": ["mode"],
+      "additionalProperties": false,
+      "properties": {
+        "mode": { "enum": ["multi", "exclusive", "bounded", "preset"] },
+        "maxSelected": { "type": "integer", "minimum": 1 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "mode": { "const": "bounded" } }, "required": ["mode"] },
+          "then": { "required": ["maxSelected"] },
+          "else": { "not": { "required": ["maxSelected"] } }
+        }
+      ]
+    },
+    "source": {
+      "type": "object",
+      "required": ["id", "kind", "trust", "name", "enabledByDefault", "userOptInRequired"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "enum": ["pacman", "aur", "flatpak", "conda", "oci", "builtin"] },
+        "trust": { "enum": ["distribution", "verified-third-party", "user-opt-in"] },
+        "name": { "$ref": "#/$defs/localized" },
+        "enabledByDefault": { "type": "boolean" },
+        "userOptInRequired": { "type": "boolean" }
+      }
+    },
+    "category": {
+      "type": "object",
+      "required": ["id", "kind", "surface", "name", "description", "selection", "children", "order"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "category" },
+        "surface": { "enum": ["applications", "components"] },
+        "name": { "$ref": "#/$defs/localized" },
+        "description": { "$ref": "#/$defs/localized" },
+        "selection": { "$ref": "#/$defs/selection" },
+        "children": { "$ref": "#/$defs/idListNonEmpty" },
+        "order": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "nodeBase": {
+      "type": "object",
+      "required": ["id", "name", "description", "primaryCategory", "tags", "selection"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "$ref": "#/$defs/localized" },
+        "description": { "$ref": "#/$defs/localized" },
+        "primaryCategory": { "$ref": "#/$defs/id" },
+        "tags": { "$ref": "#/$defs/idList" },
+        "selection": { "$ref": "#/$defs/selection" }
+      }
+    },
+    "leafBase": {
+      "allOf": [
+        { "$ref": "#/$defs/nodeBase" },
+        {
+          "type": "object",
+          "required": ["provider", "artifact", "scope", "source", "license", "review", "availability", "sizeMiB", "requires", "recommends", "conflicts", "presentation"],
+          "properties": {
+            "provider": { "enum": ["pacman", "aur", "flatpak", "conda", "builtin"] },
+            "artifact": {
+              "type": "object",
+              "required": ["type", "ids"],
+              "additionalProperties": false,
+              "properties": {
+                "type": { "enum": ["package", "package-group", "operation"] },
+                "ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^[A-Za-z0-9@._+:/-]+$" } }
+              }
+            },
+            "scope": { "enum": ["system", "user", "environment"] },
+            "source": { "$ref": "#/$defs/id" },
+            "license": {
+              "type": "object",
+              "required": ["classification", "spdx", "redistributable", "requiresAcceptance"],
+              "additionalProperties": false,
+              "properties": {
+                "classification": { "enum": ["open-source", "proprietary", "mixed"] },
+                "spdx": { "type": "string", "minLength": 1 },
+                "redistributable": { "type": "boolean" },
+                "requiresAcceptance": { "type": "boolean" }
+              }
+            },
+            "review": {
+              "type": "object",
+              "required": ["status", "date"],
+              "additionalProperties": false,
+              "properties": {
+                "status": { "enum": ["reviewed", "vm-test-pending", "source-review-pending", "legal-review-pending"] },
+                "date": { "type": "string", "format": "date" },
+                "note": { "type": "string", "minLength": 1 }
+              }
+            },
+            "availability": {
+              "type": "object",
+              "required": ["status", "architectures", "networkRequired", "offlinePolicy", "channel"],
+              "additionalProperties": false,
+              "properties": {
+                "status": { "enum": ["available", "review-channel", "unavailable"] },
+                "architectures": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["x86_64", "aarch64"] } },
+                "networkRequired": { "type": "boolean" },
+                "offlinePolicy": { "enum": ["included", "defer-with-consent", "online-only"] },
+                "channel": { "enum": ["default", "optional-review"] },
+                "reason": { "type": "string", "minLength": 1 }
+              }
+            },
+            "sizeMiB": { "type": "integer", "minimum": 0 },
+            "requires": { "$ref": "#/$defs/idList" },
+            "recommends": { "$ref": "#/$defs/idList" },
+            "conflicts": { "$ref": "#/$defs/idList" },
+            "presentation": {
+              "type": "object",
+              "required": ["recommended", "defaultSelected", "order"],
+              "additionalProperties": false,
+              "properties": {
+                "recommended": { "type": "boolean" },
+                "defaultSelected": { "type": "boolean" },
+                "order": { "type": "integer", "minimum": 0 }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "application": {
+      "allOf": [
+        { "$ref": "#/$defs/leafBase" },
+        {
+          "type": "object",
+          "required": ["kind"],
+          "properties": { "kind": { "const": "application" } }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "component": {
+      "allOf": [
+        { "$ref": "#/$defs/leafBase" },
+        {
+          "type": "object",
+          "required": ["kind", "criticalSystemCapability"],
+          "properties": {
+            "kind": { "const": "component" },
+            "criticalSystemCapability": { "type": "boolean" }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "bundle": {
+      "allOf": [
+        { "$ref": "#/$defs/nodeBase" },
+        {
+          "type": "object",
+          "required": ["kind", "surface", "children", "criticalSystemCapability", "presentation"],
+          "properties": {
+            "kind": { "const": "bundle" },
+            "surface": { "enum": ["applications", "components"] },
+            "children": {
+              "type": "object",
+              "required": ["required", "recommended", "optional"],
+              "additionalProperties": false,
+              "properties": {
+                "required": { "$ref": "#/$defs/idList" },
+                "recommended": { "$ref": "#/$defs/idList" },
+                "optional": { "$ref": "#/$defs/idList" }
+              }
+            },
+            "criticalSystemCapability": { "type": "boolean" },
+            "presentation": {
+              "type": "object",
+              "required": ["defaultSelected", "order"],
+              "additionalProperties": false,
+              "properties": {
+                "defaultSelected": { "type": "boolean" },
+                "order": { "type": "integer", "minimum": 0 }
+              }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "operation": {
+      "type": "object",
+      "required": ["id", "kind", "name", "description", "provider", "source", "action", "scope", "review", "availability"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "operation" },
+        "name": { "$ref": "#/$defs/localized" },
+        "description": { "$ref": "#/$defs/localized" },
+        "provider": { "const": "builtin" },
+        "source": { "$ref": "#/$defs/id" },
+        "action": { "enum": ["enable-service", "configure-channels", "capability-test", "hardware-handoff"] },
+        "scope": { "enum": ["system", "user", "environment"] },
+        "review": {
+          "type": "object",
+          "required": ["status", "date"],
+          "additionalProperties": false,
+          "properties": {
+            "status": { "enum": ["reviewed", "vm-test-pending"] },
+            "date": { "type": "string", "format": "date" }
+          }
+        },
+        "availability": {
+          "type": "object",
+          "required": ["status", "architectures", "networkRequired"],
+          "additionalProperties": false,
+          "properties": {
+            "status": { "enum": ["available", "unavailable"] },
+            "architectures": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["x86_64", "aarch64"] } },
+            "networkRequired": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "idList": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/id" } },
+    "idListNonEmpty": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/id" } }
+  }
+}
