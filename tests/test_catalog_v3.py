@@ -112,9 +112,11 @@ class CatalogV3Tests(unittest.TestCase):
             if bundle["id"] == bundle["primaryCategory"]:
                 self.assertEqual(bundle["id"], bundle["primaryCategory"])
                 self.assertEqual(0, ownership[bundle["id"]], bundle["id"])
-            else:
+            elif "workflow-only" not in bundle["tags"]:
                 self.assertEqual(1, ownership[bundle["id"]], bundle["id"])
                 self.assertIn(bundle["id"], category["children"])
+            else:
+                self.assertEqual(0, ownership[bundle["id"]], bundle["id"])
 
     def test_leaf_categories_have_matching_root_bundles(self):
         categories = {
@@ -126,6 +128,7 @@ class CatalogV3Tests(unittest.TestCase):
             item["id"]: item
             for item in self.catalog["bundles"]
             if item["surface"] in {"desktops", "applications"}
+            and "category-root" in item["tags"]
         }
         self.assertEqual(set(categories), set(bundles))
         for category_id, category in categories.items():
@@ -136,7 +139,8 @@ class CatalogV3Tests(unittest.TestCase):
 
     def test_existing_domain_bundles_use_components_surface(self):
         domain_bundles = [
-            item for item in self.catalog["bundles"] if item["id"].startswith("bundle-")
+            item for item in self.catalog["bundles"]
+            if item["id"].startswith("bundle-") and "workflow-only" not in item["tags"]
         ]
         self.assertTrue(domain_bundles)
         self.assertTrue(
@@ -174,6 +178,22 @@ class CatalogV3Tests(unittest.TestCase):
             visit(bundle_id)
 
         self.assertTrue(any(graph.values()), "at least one nested bundle is required")
+
+    def test_gaming_setup_is_a_hidden_fixed_workflow(self):
+        bundles = {item["id"]: item for item in self.catalog["bundles"]}
+        setup = bundles["bundle-gaming-setup"]
+        self.assertIn("workflow-only", setup["tags"])
+        self.assertIn("steam", setup["children"]["required"])
+        self.assertIn("component-gaming-foundations", setup["children"]["required"])
+        self.assertIn("component-open-gpu-runtime", setup["children"]["required"])
+
+    def test_proxy_review_candidates_are_never_default_available(self):
+        components = {item["id"]: item for item in self.catalog["components"]}
+        for component_id in ("component-mihomo", "component-clash-verge"):
+            component = components[component_id]
+            self.assertEqual("aur", component["provider"])
+            self.assertEqual("review-channel", component["availability"]["status"])
+            self.assertFalse(component["presentation"]["defaultSelected"])
 
     def test_firefox_is_only_default_selected_ordinary_application(self):
         selected = [
