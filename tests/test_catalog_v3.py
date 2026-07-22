@@ -16,7 +16,7 @@ class CatalogV3Tests(unittest.TestCase):
     def setUpClass(cls):
         cls.catalog = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
         cls.schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
-        cls.sections = ("applications", "components", "bundles", "operations")
+        cls.sections = ("desktops", "applications", "components", "bundles", "operations")
         cls.nodes = {
             node["id"]: node
             for section in cls.sections
@@ -49,12 +49,11 @@ class CatalogV3Tests(unittest.TestCase):
             for item in self.catalog[section]
         ]
         duplicates = sorted(item for item, count in Counter(ids).items() if count > 1)
-        application_category_ids = sorted(
+        category_root_ids = sorted(
             item["id"]
             for item in self.catalog["categories"]
-            if item["surface"] == "applications"
         )
-        self.assertEqual(application_category_ids, duplicates)
+        self.assertEqual(category_root_ids, duplicates)
         self.assertTrue(all(Counter(ids)[item] == 2 for item in duplicates))
 
     def test_all_references_resolve(self):
@@ -65,7 +64,7 @@ class CatalogV3Tests(unittest.TestCase):
         for category in self.catalog["categories"]:
             self.assertEqual([], sorted(set(category["children"]) - node_ids), category["id"])
 
-        for section in ("applications", "components"):
+        for section in ("desktops", "applications", "components"):
             for leaf in self.catalog[section]:
                 self.assertIn(leaf["primaryCategory"], category_ids)
                 self.assertIn(leaf["source"], source_ids)
@@ -89,7 +88,7 @@ class CatalogV3Tests(unittest.TestCase):
             for category in self.catalog["categories"]
             for child in category["children"]
         )
-        categorized = self.catalog["applications"] + self.catalog["components"]
+        categorized = self.catalog["desktops"] + self.catalog["applications"] + self.catalog["components"]
 
         for node in categorized:
             self.assertEqual(1, ownership[node["id"]], node["id"])
@@ -99,6 +98,10 @@ class CatalogV3Tests(unittest.TestCase):
             self.assertEqual(
                 "applications", category_by_id[application["primaryCategory"]]["surface"]
             )
+        for desktop in self.catalog["desktops"]:
+            self.assertEqual(
+                "desktops", category_by_id[desktop["primaryCategory"]]["surface"]
+            )
         for node in self.catalog["components"]:
             self.assertEqual(
                 "components", category_by_id[node["primaryCategory"]]["surface"]
@@ -106,23 +109,23 @@ class CatalogV3Tests(unittest.TestCase):
         for bundle in self.catalog["bundles"]:
             category = category_by_id[bundle["primaryCategory"]]
             self.assertEqual(bundle["surface"], category["surface"], bundle["id"])
-            if bundle["surface"] == "applications":
+            if bundle["id"] == bundle["primaryCategory"]:
                 self.assertEqual(bundle["id"], bundle["primaryCategory"])
                 self.assertEqual(0, ownership[bundle["id"]], bundle["id"])
             else:
                 self.assertEqual(1, ownership[bundle["id"]], bundle["id"])
                 self.assertIn(bundle["id"], category["children"])
 
-    def test_application_categories_have_matching_root_bundles(self):
+    def test_leaf_categories_have_matching_root_bundles(self):
         categories = {
             item["id"]: item
             for item in self.catalog["categories"]
-            if item["surface"] == "applications"
+            if item["surface"] in {"desktops", "applications"}
         }
         bundles = {
             item["id"]: item
             for item in self.catalog["bundles"]
-            if item["surface"] == "applications"
+            if item["surface"] in {"desktops", "applications"}
         }
         self.assertEqual(set(categories), set(bundles))
         for category_id, category in categories.items():
@@ -179,17 +182,21 @@ class CatalogV3Tests(unittest.TestCase):
             if item["presentation"]["defaultSelected"]
         ]
         self.assertEqual(["firefox"], selected)
+        self.assertEqual(
+            ["desktop-plasma"],
+            [item["id"] for item in self.catalog["desktops"] if item["presentation"]["defaultSelected"]],
+        )
         self.assertFalse(any(item["presentation"]["defaultSelected"] for item in self.catalog["components"]))
         self.assertFalse(any(item["presentation"]["defaultSelected"] for item in self.catalog["bundles"]))
 
     def test_selection_policies_are_complete_and_safe(self):
-        selectable = self.catalog["categories"] + self.catalog["applications"] + self.catalog["components"] + self.catalog["bundles"]
+        selectable = self.catalog["categories"] + self.catalog["desktops"] + self.catalog["applications"] + self.catalog["components"] + self.catalog["bundles"]
         modes = {item["selection"]["mode"] for item in selectable}
         self.assertEqual({"multi", "exclusive", "bounded", "preset"}, modes)
 
         defaults = {
             item["id"]: item["presentation"]["defaultSelected"]
-            for item in self.catalog["applications"] + self.catalog["components"] + self.catalog["bundles"]
+            for item in self.catalog["desktops"] + self.catalog["applications"] + self.catalog["components"] + self.catalog["bundles"]
         }
         for category in self.catalog["categories"]:
             mode = category["selection"]["mode"]
@@ -206,14 +213,14 @@ class CatalogV3Tests(unittest.TestCase):
 
     def test_provider_source_boundaries(self):
         source_kinds = {item["id"]: item["kind"] for item in self.catalog["sources"]}
-        for leaf in self.catalog["applications"] + self.catalog["components"]:
+        for leaf in self.catalog["desktops"] + self.catalog["applications"] + self.catalog["components"]:
             self.assertEqual(leaf["provider"], source_kinds[leaf["source"]], leaf["id"])
         for operation in self.catalog["operations"]:
             self.assertEqual("builtin", source_kinds[operation["source"]])
 
     def test_review_channel_and_wps_policy(self):
         sources = {item["id"]: item for item in self.catalog["sources"]}
-        for leaf in self.catalog["applications"] + self.catalog["components"]:
+        for leaf in self.catalog["desktops"] + self.catalog["applications"] + self.catalog["components"]:
             if leaf["availability"]["channel"] == "optional-review":
                 self.assertTrue(
                     sources[leaf["source"]]["userOptInRequired"]
@@ -269,6 +276,30 @@ class CatalogV3Tests(unittest.TestCase):
             "bundle-container-workstation",
         }
         self.assertTrue(required.issubset(self.nodes))
+
+    def test_desktop_category_is_exclusive_with_exact_reviewed_cohorts(self):
+        category = next(item for item in self.catalog["categories"] if item["id"] == "desktop-environments")
+        self.assertEqual(category["surface"], "desktops")
+        self.assertEqual(category["selection"], {"mode": "exclusive"})
+        self.assertEqual(category["children"], ["desktop-plasma", "desktop-gnome"])
+
+        gnome = self.nodes["desktop-gnome"]
+        self.assertEqual(
+            gnome["artifact"]["ids"],
+            [
+                "file-roller", "gnome-control-center", "gnome-disk-utility",
+                "gnome-keyring", "gnome-session", "gnome-shell", "gnome-terminal",
+                "gst-plugin-pipewire", "nautilus", "xdg-desktop-portal-gnome",
+                "xdg-desktop-portal-gtk",
+            ],
+        )
+        for desktop in self.catalog["desktops"]:
+            self.assertEqual(desktop["review"]["status"], "reviewed")
+            self.assertEqual(desktop["availability"]["offlinePolicy"], "included")
+
+        root = self.nodes["desktop-environments"]
+        self.assertEqual(root["surface"], "desktops")
+        self.assertEqual(root["children"]["optional"], category["children"])
 
 
 if __name__ == "__main__":

@@ -7,19 +7,20 @@ Bundle/Component Manager work. Catalog v2 remains unchanged as a compatibility
 input for existing consumers. Package transactions remain the responsibility
 of an audited planning and transaction backend.
 
-Catalog v3 separates the two product surfaces while sharing stable IDs and one
+Catalog v3 separates three product surfaces while sharing stable IDs and one
 selection model:
 
+- `desktops[]` contains reviewed, mutually exclusive desktop cohorts.
 - `applications[]` contains individually selectable ordinary software.
 - `components[]` contains runtimes, tools and system capabilities.
-- `bundles[]` are expandable presets with an explicit `applications` or
-  `components` surface and `required`, `recommended` and `optional` references.
+- `bundles[]` are expandable presets with an explicit `desktops`, `applications`
+  or `components` surface and `required`, `recommended` and `optional` references.
   Bundles may nest other bundles and must form a DAG.
-- Every applications category has a same-ID category-root bundle whose members
+- Every desktop or applications category has a same-ID category-root bundle whose members
   exactly mirror the category children, in order, as optional references.
 - `operations[]` contains fixed, controlled action IDs. Catalog data never
   contains executable shell strings.
-- `categories[]` owns each application, component or bundle through exactly one
+- `categories[]` owns each desktop, application, component or bundle through exactly one
   `primaryCategory` and declares `multi`, `exclusive` or `bounded` selection.
 - Bundles declare `preset`; selecting one changes leaf defaults but does not
   create an opaque installation artifact.
