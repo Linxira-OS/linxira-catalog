@@ -186,6 +186,8 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertIn("steam", setup["children"]["required"])
         self.assertIn("component-gaming-foundations", setup["children"]["required"])
         self.assertIn("component-open-gpu-runtime", setup["children"]["required"])
+        components = {item["id"]: item for item in self.catalog["components"]}
+        self.assertIn("umu-launcher", components["component-gaming-foundations"]["artifact"]["ids"])
 
     def test_proxy_review_candidates_are_never_default_available(self):
         components = {item["id"]: item for item in self.catalog["components"]}
@@ -313,9 +315,13 @@ class CatalogV3Tests(unittest.TestCase):
                 "xdg-desktop-portal-gtk",
             ],
         )
-        for desktop in self.catalog["desktops"]:
-            self.assertEqual(desktop["review"]["status"], "reviewed")
-            self.assertEqual(desktop["availability"]["offlinePolicy"], "included")
+        plasma = self.nodes["desktop-plasma"]
+        self.assertEqual(plasma["review"]["status"], "reviewed")
+        self.assertEqual(plasma["availability"]["offlinePolicy"], "included")
+        self.assertEqual(gnome["review"]["status"], "vm-test-pending")
+        self.assertEqual(gnome["availability"]["status"], "unavailable")
+        self.assertEqual(gnome["availability"]["channel"], "default")
+        self.assertEqual(gnome["availability"]["offlinePolicy"], "online-only")
 
         root = self.nodes["desktop-environments"]
         self.assertEqual(root["surface"], "desktops")
