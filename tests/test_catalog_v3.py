@@ -197,13 +197,13 @@ class CatalogV3Tests(unittest.TestCase):
             self.assertEqual("review-channel", component["availability"]["status"])
             self.assertFalse(component["presentation"]["defaultSelected"])
 
-    def test_firefox_is_only_default_selected_ordinary_application(self):
+    def test_firefox_and_chromium_are_default_selected_browser_applications(self):
         selected = [
             item["id"]
             for item in self.catalog["applications"]
             if item["presentation"]["defaultSelected"]
         ]
-        self.assertEqual(["firefox"], selected)
+        self.assertEqual(["firefox", "chromium"], selected)
         self.assertEqual(
             ["desktop-plasma"],
             [item["id"] for item in self.catalog["desktops"] if item["presentation"]["defaultSelected"]],
@@ -211,10 +211,32 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertFalse(any(item["presentation"]["defaultSelected"] for item in self.catalog["components"]))
         self.assertFalse(any(item["presentation"]["defaultSelected"] for item in self.catalog["bundles"]))
 
+    def test_system_and_scientific_application_categories_are_broad_but_not_default(self):
+        categories = {item["id"]: item for item in self.catalog["categories"]}
+        self.assertEqual(
+            ["octave", "paraview", "veusz", "labplot", "cantor", "rkward", "spyder", "sagemath"],
+            categories["app-scientific"]["children"],
+        )
+        self.assertEqual(
+            ["gparted", "partitionmanager", "gnome-disk-utility", "filelight", "kdeconnect", "timeshift", "bleachbit", "flatseal"],
+            categories["app-system"]["children"],
+        )
+
+        for category_id in ("app-scientific", "app-system"):
+            for child_id in categories[category_id]["children"]:
+                child = self.nodes[child_id]
+                self.assertFalse(child["presentation"]["defaultSelected"], child_id)
+                if child_id != "flatseal":
+                    self.assertEqual("arch", child["source"], child_id)
+                    self.assertEqual("pacman", child["provider"], child_id)
+
+        self.assertEqual("flathub", self.nodes["flatseal"]["source"])
+        self.assertEqual("optional-review", self.nodes["flatseal"]["availability"]["channel"])
+
     def test_selection_policies_are_complete_and_safe(self):
         selectable = self.catalog["categories"] + self.catalog["desktops"] + self.catalog["applications"] + self.catalog["components"] + self.catalog["bundles"]
         modes = {item["selection"]["mode"] for item in selectable}
-        self.assertEqual({"multi", "exclusive", "bounded", "preset"}, modes)
+        self.assertEqual({"multi", "exclusive", "preset"}, modes)
 
         defaults = {
             item["id"]: item["presentation"]["defaultSelected"]
@@ -229,6 +251,10 @@ class CatalogV3Tests(unittest.TestCase):
                 self.assertLessEqual(selected_count, category["selection"]["maxSelected"], category["id"])
                 self.assertLess(category["selection"]["maxSelected"], len(category["children"]), category["id"])
             self.assertNotEqual("preset", mode, "categories are organization nodes, not presets")
+
+        for category in self.catalog["categories"]:
+            if category["surface"] == "applications":
+                self.assertEqual("multi", category["selection"]["mode"], category["id"])
 
         for bundle in self.catalog["bundles"]:
             self.assertEqual("preset", bundle["selection"]["mode"], bundle["id"])

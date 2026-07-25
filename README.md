@@ -21,7 +21,8 @@ selection model:
 - `operations[]` contains fixed, controlled action IDs. Catalog data never
   contains executable shell strings.
 - `categories[]` owns each desktop, application, component or bundle through exactly one
-  `primaryCategory` and declares `multi`, `exclusive` or `bounded` selection.
+  `primaryCategory`; application categories are multi-select, while desktop
+  environment categories may be mutually exclusive.
 - Bundles declare `preset`; selecting one changes leaf defaults but does not
   create an opaque installation artifact.
 
@@ -59,6 +60,6 @@ python -m unittest discover -s tests -v
 
 Validation covers the schema, category-root ID pairs and all other global IDs,
 references, primary-category ownership, bundle surfaces, nested bundle
-acyclicity, duplicate members, provider/source boundaries, the Firefox-only
-ordinary application default, review-channel policy, printing/scanning
-capability coverage and all selection modes.
+acyclicity, duplicate members, provider/source boundaries, reviewed browser
+application defaults, review-channel policy, printing/scanning
+capability coverage and the selection modes used by the catalog.
