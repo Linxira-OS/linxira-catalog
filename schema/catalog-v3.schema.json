@@ -51,7 +51,7 @@
       "additionalProperties": false,
       "properties": {
         "id": { "$ref": "#/$defs/id" },
-        "kind": { "enum": ["pacman", "aur", "flatpak", "conda", "oci", "builtin"] },
+        "kind": { "enum": ["pacman", "aur", "flatpak", "conda", "pip", "oci", "builtin"] },
         "trust": { "enum": ["distribution", "verified-third-party", "user-opt-in"] },
         "name": { "$ref": "#/$defs/localized" },
         "enabledByDefault": { "type": "boolean" },
@@ -92,7 +92,7 @@
           "type": "object",
           "required": ["provider", "artifact", "scope", "source", "license", "review", "availability", "sizeMiB", "requires", "recommends", "conflicts", "presentation"],
           "properties": {
-            "provider": { "enum": ["pacman", "aur", "flatpak", "conda", "builtin"] },
+            "provider": { "enum": ["pacman", "aur", "flatpak", "conda", "pip", "builtin"] },
             "artifact": {
               "type": "object",
               "required": ["type", "ids"],

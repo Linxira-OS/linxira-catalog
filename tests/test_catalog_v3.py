@@ -197,19 +197,31 @@ class CatalogV3Tests(unittest.TestCase):
             self.assertEqual("review-channel", component["availability"]["status"])
             self.assertFalse(component["presentation"]["defaultSelected"])
 
-    def test_firefox_and_chromium_are_default_selected_browser_applications(self):
+    def test_only_firefox_is_default_selected_browser_application(self):
         selected = [
             item["id"]
             for item in self.catalog["applications"]
             if item["presentation"]["defaultSelected"]
         ]
-        self.assertEqual(["firefox", "chromium"], selected)
+        self.assertEqual(["firefox"], selected)
+        self.assertTrue(self.nodes["chromium"]["presentation"]["recommended"])
+        self.assertFalse(self.nodes["chromium"]["presentation"]["defaultSelected"])
         self.assertEqual(
             ["desktop-plasma"],
             [item["id"] for item in self.catalog["desktops"] if item["presentation"]["defaultSelected"]],
         )
         self.assertFalse(any(item["presentation"]["defaultSelected"] for item in self.catalog["components"]))
         self.assertFalse(any(item["presentation"]["defaultSelected"] for item in self.catalog["bundles"]))
+
+    def test_pip_components_are_explicit_review_channel_with_python_prerequisites(self):
+        source = next(item for item in self.catalog["sources"] if item["id"] == "pypi")
+        component = self.nodes["component-python-pypi-tools"]
+        self.assertEqual(source["kind"], "pip")
+        self.assertEqual(component["provider"], "pip")
+        self.assertEqual(component["source"], "pypi")
+        self.assertEqual(component["requires"], ["component-python-venv"])
+        self.assertEqual(component["availability"]["channel"], "optional-review")
+        self.assertFalse(component["presentation"]["defaultSelected"])
 
     def test_system_and_scientific_application_categories_are_broad_but_not_default(self):
         categories = {item["id"]: item for item in self.catalog["categories"]}
