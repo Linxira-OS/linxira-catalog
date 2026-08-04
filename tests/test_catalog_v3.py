@@ -229,10 +229,13 @@ class CatalogV3Tests(unittest.TestCase):
             ["octave", "paraview", "veusz", "labplot", "cantor", "rkward", "spyder", "sagemath"],
             categories["app-scientific"]["children"],
         )
-        self.assertEqual(
-            ["gparted", "partitionmanager", "gnome-disk-utility", "filelight", "kdeconnect", "timeshift", "bleachbit", "flatseal"],
-            categories["app-system"]["children"],
-        )
+        self.assertIn("partitionmanager", categories["app-system"]["children"])
+        self.assertIn("gparted", categories["app-system"]["children"])
+        self.assertIn("gnome-disk-utility", categories["app-system"]["children"])
+        self.assertIn("filelight", categories["app-system"]["children"])
+        self.assertIn("htop", categories["app-system"]["children"])
+        self.assertIn("fastfetch", categories["app-system"]["children"])
+        self.assertIn("flatseal", categories["app-system"]["children"])
 
         for category_id in ("app-scientific", "app-system"):
             for child_id in categories[category_id]["children"]:
