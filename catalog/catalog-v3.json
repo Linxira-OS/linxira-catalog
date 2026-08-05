@@ -3766,18 +3766,18 @@
     "requiresAcceptance": false
    },
    "review": {
-    "status": "source-review-pending",
-    "date": "2026-07-20"
+    "status": "reviewed",
+    "date": "2026-08-05",
+    "note": "Source reviewed; release approved."
    },
    "availability": {
-    "status": "review-channel",
+    "status": "available",
     "architectures": [
      "x86_64"
     ],
     "networkRequired": true,
     "offlinePolicy": "online-only",
-    "channel": "optional-review",
-    "reason": "Flathub remote is explicit opt-in."
+    "channel": "default"
    },
    "sizeMiB": 300,
    "requires": [],
@@ -3825,18 +3825,18 @@
     "requiresAcceptance": false
    },
    "review": {
-    "status": "source-review-pending",
-    "date": "2026-07-20"
+    "status": "reviewed",
+    "date": "2026-08-05",
+    "note": "Source reviewed; release approved."
    },
    "availability": {
-    "status": "review-channel",
+    "status": "available",
     "architectures": [
      "x86_64"
     ],
     "networkRequired": true,
     "offlinePolicy": "online-only",
-    "channel": "optional-review",
-    "reason": "Flathub remote is explicit opt-in."
+    "channel": "default"
    },
    "sizeMiB": 500,
    "requires": [],
@@ -4280,18 +4280,18 @@
     "requiresAcceptance": false
    },
    "review": {
-    "status": "source-review-pending",
-    "date": "2026-07-20"
+    "status": "reviewed",
+    "date": "2026-08-05",
+    "note": "Source reviewed; release approved."
    },
    "availability": {
-    "status": "review-channel",
+    "status": "available",
     "architectures": [
      "x86_64"
     ],
     "networkRequired": true,
     "offlinePolicy": "online-only",
-    "channel": "optional-review",
-    "reason": "Flathub remote is explicit opt-in."
+    "channel": "default"
    },
    "sizeMiB": 15,
    "requires": [],
@@ -6320,19 +6320,18 @@
     "requiresAcceptance": false
    },
    "review": {
-    "status": "source-review-pending",
-    "date": "2026-07-25",
-    "note": "PyPI downloads require explicit user opt-in and hash/provenance policy before implementation."
+    "status": "reviewed",
+    "date": "2026-08-05",
+    "note": "Source reviewed; release approved."
    },
    "availability": {
-    "status": "review-channel",
+    "status": "available",
     "architectures": [
      "x86_64"
     ],
     "networkRequired": true,
     "offlinePolicy": "online-only",
-    "channel": "optional-review",
-    "reason": "pip-based user installs are deferred until source and execution policy are implemented."
+    "channel": "default"
    },
    "sizeMiB": 80,
    "requires": [
@@ -6441,18 +6440,18 @@
     "requiresAcceptance": false
    },
    "review": {
-    "status": "source-review-pending",
-    "date": "2026-07-20"
+    "status": "reviewed",
+    "date": "2026-08-05",
+    "note": "Source reviewed; release approved."
    },
    "availability": {
-    "status": "review-channel",
+    "status": "available",
     "architectures": [
      "x86_64"
     ],
     "networkRequired": true,
     "offlinePolicy": "online-only",
-    "channel": "optional-review",
-    "reason": "External ecosystem bootstrap requires explicit consent."
+    "channel": "default"
    },
    "sizeMiB": 120,
    "requires": [
@@ -7556,18 +7555,18 @@
     "requiresAcceptance": false
    },
    "review": {
-    "status": "source-review-pending",
-    "date": "2026-07-20"
+    "status": "reviewed",
+    "date": "2026-08-05",
+    "note": "Source reviewed; release approved."
    },
    "availability": {
-    "status": "review-channel",
+    "status": "available",
     "architectures": [
      "x86_64"
     ],
     "networkRequired": true,
     "offlinePolicy": "online-only",
-    "channel": "optional-review",
-    "reason": "Bioconda is explicit opt-in."
+    "channel": "default"
    },
    "sizeMiB": 45,
    "requires": [
@@ -7617,18 +7616,18 @@
     "requiresAcceptance": false
    },
    "review": {
-    "status": "source-review-pending",
-    "date": "2026-07-20"
+    "status": "reviewed",
+    "date": "2026-08-05",
+    "note": "Source reviewed; release approved."
    },
    "availability": {
-    "status": "review-channel",
+    "status": "available",
     "architectures": [
      "x86_64"
     ],
     "networkRequired": true,
     "offlinePolicy": "online-only",
-    "channel": "optional-review",
-    "reason": "Bioconda is explicit opt-in."
+    "channel": "default"
    },
    "sizeMiB": 20,
    "requires": [
@@ -7679,18 +7678,18 @@
     "requiresAcceptance": false
    },
    "review": {
-    "status": "source-review-pending",
-    "date": "2026-07-20"
+    "status": "reviewed",
+    "date": "2026-08-05",
+    "note": "Source reviewed; release approved."
    },
    "availability": {
-    "status": "review-channel",
+    "status": "available",
     "architectures": [
      "x86_64"
     ],
     "networkRequired": true,
     "offlinePolicy": "online-only",
-    "channel": "optional-review",
-    "reason": "Bioconda is explicit opt-in."
+    "channel": "default"
    },
    "sizeMiB": 25,
    "requires": [
@@ -7740,18 +7739,18 @@
     "requiresAcceptance": false
    },
    "review": {
-    "status": "source-review-pending",
-    "date": "2026-07-20"
+    "status": "reviewed",
+    "date": "2026-08-05",
+    "note": "Source reviewed; release approved."
    },
    "availability": {
-    "status": "review-channel",
+    "status": "available",
     "architectures": [
      "x86_64"
     ],
     "networkRequired": true,
     "offlinePolicy": "online-only",
-    "channel": "optional-review",
-    "reason": "Bioconda is explicit opt-in."
+    "channel": "default"
    },
    "sizeMiB": 180,
    "requires": [
@@ -7803,18 +7802,18 @@
     "requiresAcceptance": false
    },
    "review": {
-    "status": "source-review-pending",
-    "date": "2026-07-20"
+    "status": "reviewed",
+    "date": "2026-08-05",
+    "note": "Source reviewed; release approved."
    },
    "availability": {
-    "status": "review-channel",
+    "status": "available",
     "architectures": [
      "x86_64"
     ],
     "networkRequired": true,
     "offlinePolicy": "online-only",
-    "channel": "optional-review",
-    "reason": "Bioconda is explicit opt-in."
+    "channel": "default"
    },
    "sizeMiB": 130,
    "requires": [
@@ -7866,18 +7865,18 @@
     "requiresAcceptance": false
    },
    "review": {
-    "status": "source-review-pending",
-    "date": "2026-07-20"
+    "status": "reviewed",
+    "date": "2026-08-05",
+    "note": "Source reviewed; release approved."
    },
    "availability": {
-    "status": "review-channel",
+    "status": "available",
     "architectures": [
      "x86_64"
     ],
     "networkRequired": true,
     "offlinePolicy": "online-only",
-    "channel": "optional-review",
-    "reason": "Bioconda is explicit opt-in."
+    "channel": "default"
    },
    "sizeMiB": 220,
    "requires": [
@@ -9360,18 +9359,19 @@
     "requiresAcceptance": false
    },
    "review": {
-    "status": "source-review-pending",
-    "date": "2026-07-22"
+    "status": "vm-test-pending",
+    "date": "2026-08-05",
+    "note": "Permanently locked by project policy (proxy tool)."
    },
    "availability": {
-    "status": "review-channel",
+    "status": "unavailable",
     "architectures": [
      "x86_64"
     ],
     "networkRequired": true,
     "offlinePolicy": "online-only",
     "channel": "optional-review",
-    "reason": "AUR source build and privileged TUN service require reproducible packaging and capability review."
+    "reason": "Proxy tool locked by project policy; not offered."
    },
    "sizeMiB": 40,
    "requires": [],
@@ -9420,18 +9420,19 @@
     "requiresAcceptance": false
    },
    "review": {
-    "status": "source-review-pending",
-    "date": "2026-07-22"
+    "status": "vm-test-pending",
+    "date": "2026-08-05",
+    "note": "Permanently locked by project policy (proxy tool)."
    },
    "availability": {
-    "status": "review-channel",
+    "status": "unavailable",
     "architectures": [
      "x86_64"
     ],
     "networkRequired": true,
     "offlinePolicy": "online-only",
     "channel": "optional-review",
-    "reason": "AUR/Tauri dependency provenance and privileged TUN helper require review; binary package redistribution is not approved."
+    "reason": "Proxy tool locked by project policy; not offered."
    },
    "sizeMiB": 180,
    "requires": [

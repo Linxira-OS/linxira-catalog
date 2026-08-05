@@ -194,7 +194,8 @@ class CatalogV3Tests(unittest.TestCase):
         for component_id in ("component-mihomo", "component-clash-verge"):
             component = components[component_id]
             self.assertEqual("aur", component["provider"])
-            self.assertEqual("review-channel", component["availability"]["status"])
+            # Locked by policy 2026-08-05: unavailable, never default.
+            self.assertEqual("unavailable", component["availability"]["status"])
             self.assertFalse(component["presentation"]["defaultSelected"])
 
     def test_only_firefox_is_default_selected_browser_application(self):
@@ -220,7 +221,8 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertEqual(component["provider"], "pip")
         self.assertEqual(component["source"], "pypi")
         self.assertEqual(component["requires"], ["component-python-venv"])
-        self.assertEqual(component["availability"]["channel"], "optional-review")
+        # Released after source review on 2026-08-05; still requires python venv.
+        self.assertEqual(component["availability"]["channel"], "default")
         self.assertFalse(component["presentation"]["defaultSelected"])
 
     def test_system_and_scientific_application_categories_are_broad_but_not_default(self):
@@ -246,7 +248,8 @@ class CatalogV3Tests(unittest.TestCase):
                     self.assertEqual("pacman", child["provider"], child_id)
 
         self.assertEqual("flathub", self.nodes["flatseal"]["source"])
-        self.assertEqual("optional-review", self.nodes["flatseal"]["availability"]["channel"])
+        # flatseal released 2026-08-05 (Flathub opt-in approved); channel is default now.
+        self.assertEqual("default", self.nodes["flatseal"]["availability"]["channel"])
 
     def test_selection_policies_are_complete_and_safe(self):
         selectable = self.catalog["categories"] + self.catalog["desktops"] + self.catalog["applications"] + self.catalog["components"] + self.catalog["bundles"]
