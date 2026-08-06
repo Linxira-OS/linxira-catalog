@@ -459,7 +459,8 @@
         "htop",
         "kdeconnect",
         "partitionmanager",
-        "timeshift"
+        "timeshift",
+        "application-btop"
       ],
       "order": 140
     },

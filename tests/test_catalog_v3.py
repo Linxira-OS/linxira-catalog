@@ -211,7 +211,15 @@ class CatalogV3Tests(unittest.TestCase):
             ["desktop-plasma"],
             [item["id"] for item in self.catalog["desktops"] if item["presentation"]["defaultSelected"]],
         )
-        self.assertFalse(any(item["presentation"]["defaultSelected"] for item in self.catalog["components"]))
+        # 2026-08-06 产品决策: 容器(Podman/Distrobox/Apptainer)与 Node.js 默认选中(桌面超算核心能力)
+        self.assertEqual(
+            ["component-nodejs", "component-podman", "component-distrobox", "component-apptainer"],
+            sorted(
+                item["id"]
+                for item in self.catalog["components"]
+                if item["presentation"]["defaultSelected"]
+            ),
+        )
         self.assertFalse(any(item["presentation"]["defaultSelected"] for item in self.catalog["bundles"]))
 
     def test_pip_components_are_explicit_review_channel_with_python_prerequisites(self):
