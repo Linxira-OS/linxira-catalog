@@ -213,7 +213,7 @@ class CatalogV3Tests(unittest.TestCase):
         )
         # 2026-08-06 产品决策: 容器(Podman/Distrobox/Apptainer)与 Node.js 默认选中(桌面超算核心能力)
         self.assertEqual(
-            ["component-nodejs", "component-podman", "component-distrobox", "component-apptainer"],
+            ["component-apptainer", "component-distrobox", "component-nodejs", "component-podman"],
             sorted(
                 item["id"]
                 for item in self.catalog["components"]

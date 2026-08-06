@@ -10061,7 +10061,8 @@
           "htop",
           "kdeconnect",
           "partitionmanager",
-          "timeshift"
+          "timeshift",
+          "application-btop"
         ]
       },
       "criticalSystemCapability": false,
