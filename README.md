@@ -44,6 +44,21 @@ used as the v3 capability model.
 - Catalog data contains package identifiers, never executable command strings.
 - A profile ID is an allowlisted transaction request, not a shell fragment.
 
+## Offline policy (installation surfaces)
+
+`availability.offlinePolicy` drives the badge every installation surface
+(installer, Package Center, Component Manager) must display, so users can
+distinguish what ships on the media from what needs a network:
+
+| value | badge | meaning |
+|---|---|---|
+| `included` | 镜像自带 | Package is carried in the ISO offline repository; installs without network. |
+| `online-only` | 需联网 | Package is not on the media; a network is required. |
+| `defer-with-consent` | 可选延后 | Defaults to deferred; installs online after explicit user consent. |
+
+Installer-eligible leaves additionally require `review.status == "reviewed"`;
+leaves still in review must never be default-selected.
+
 ## Files
 
 - `catalog/catalog-v2.json`: current reviewed catalog
