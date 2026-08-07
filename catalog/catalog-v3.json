@@ -6578,7 +6578,7 @@
       "conflicts": [],
       "presentation": {
         "recommended": true,
-        "defaultSelected": true,
+        "defaultSelected": false,
         "order": 5
       },
       "criticalSystemCapability": false
@@ -8883,7 +8883,7 @@
       "conflicts": [],
       "presentation": {
         "recommended": false,
-        "defaultSelected": true,
+        "defaultSelected": false,
         "order": 5
       },
       "criticalSystemCapability": false

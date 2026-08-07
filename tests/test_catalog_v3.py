@@ -212,8 +212,10 @@ class CatalogV3Tests(unittest.TestCase):
             [item["id"] for item in self.catalog["desktops"] if item["presentation"]["defaultSelected"]],
         )
         # 2026-08-06 产品决策: 容器(Podman/Distrobox/Apptainer)与 Node.js 默认选中(桌面超算核心能力)
+        # 2026-08-07 修订: Node.js 与 Apptainer 取消默认选中(与其他运行时一致; Apptainer 未审查)
+        #   保留 Podman / Distrobox 默认选中(用户确认)
         self.assertEqual(
-            ["component-apptainer", "component-distrobox", "component-nodejs", "component-podman"],
+            ["component-distrobox", "component-podman"],
             sorted(
                 item["id"]
                 for item in self.catalog["components"]
