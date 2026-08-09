@@ -932,7 +932,7 @@
         "architectures": [
           "x86_64"
         ],
-        "networkRequired": true,
+        "networkRequired": false,
         "offlinePolicy": "included",
         "channel": "default"
       },
@@ -1504,8 +1504,8 @@
         "architectures": [
           "x86_64"
         ],
-        "networkRequired": true,
-        "offlinePolicy": "online-only",
+        "networkRequired": false,
+        "offlinePolicy": "included",
         "channel": "default"
       },
       "sizeMiB": 90,
@@ -2685,8 +2685,8 @@
         "architectures": [
           "x86_64"
         ],
-        "networkRequired": true,
-        "offlinePolicy": "online-only",
+        "networkRequired": false,
+        "offlinePolicy": "included",
         "channel": "default"
       },
       "sizeMiB": 70,
@@ -4176,8 +4176,8 @@
         "architectures": [
           "x86_64"
         ],
-        "networkRequired": true,
-        "offlinePolicy": "online-only",
+        "networkRequired": false,
+        "offlinePolicy": "included",
         "channel": "default"
       },
       "sizeMiB": 20,
@@ -5644,8 +5644,8 @@
         "architectures": [
           "x86_64"
         ],
-        "networkRequired": true,
-        "offlinePolicy": "online-only",
+        "networkRequired": false,
+        "offlinePolicy": "included",
         "channel": "default"
       },
       "sizeMiB": 5,
@@ -6267,8 +6267,8 @@
         "architectures": [
           "x86_64"
         ],
-        "networkRequired": true,
-        "offlinePolicy": "defer-with-consent",
+        "networkRequired": false,
+        "offlinePolicy": "included",
         "channel": "default"
       },
       "sizeMiB": 70,
@@ -6913,8 +6913,8 @@
         "architectures": [
           "x86_64"
         ],
-        "networkRequired": true,
-        "offlinePolicy": "online-only",
+        "networkRequired": false,
+        "offlinePolicy": "included",
         "channel": "default"
       },
       "sizeMiB": 35,
@@ -8932,7 +8932,7 @@
           "x86_64"
         ],
         "networkRequired": true,
-        "offlinePolicy": "defer-with-consent",
+        "offlinePolicy": "online-only",
         "channel": "default"
       },
       "sizeMiB": 35,
@@ -8992,7 +8992,7 @@
           "x86_64"
         ],
         "networkRequired": true,
-        "offlinePolicy": "defer-with-consent",
+        "offlinePolicy": "online-only",
         "channel": "default"
       },
       "sizeMiB": 25,
@@ -9052,7 +9052,7 @@
           "x86_64"
         ],
         "networkRequired": true,
-        "offlinePolicy": "defer-with-consent",
+        "offlinePolicy": "online-only",
         "channel": "default"
       },
       "sizeMiB": 45,
@@ -9113,7 +9113,7 @@
           "x86_64"
         ],
         "networkRequired": true,
-        "offlinePolicy": "defer-with-consent",
+        "offlinePolicy": "online-only",
         "channel": "default"
       },
       "sizeMiB": 15,
