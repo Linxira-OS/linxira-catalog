@@ -1,8 +1,8 @@
 {
   "$schema": "catalog-v3.schema.json",
   "catalogVersion": 3,
-  "release": "2026.07",
-  "reviewed": "2026-07-20",
+  "release": "2026.08.09",
+  "reviewed": "2026-08-09",
   "sources": [
     {
       "id": "arch",
@@ -126,7 +126,6 @@
       "children": [
         "brave",
         "chromium",
-        "firefox",
         "nyxt"
       ],
       "order": 10
@@ -200,7 +199,6 @@
         "evince",
         "foliate",
         "ghostwriter",
-        "okular",
         "pandoc",
         "zathura"
       ],
@@ -354,7 +352,6 @@
         "docker-compose",
         "geany",
         "gitg",
-        "kate",
         "kdiff3",
         "meld",
         "sqlitebrowser"
@@ -455,16 +452,13 @@
       },
       "children": [
         "bleachbit",
-        "fastfetch",
         "filelight",
         "flatseal",
         "gnome-disk-utility",
         "gparted",
         "htop",
         "kdeconnect",
-        "partitionmanager",
-        "timeshift",
-        "application-btop"
+        "partitionmanager"
       ],
       "order": 140
     },
@@ -486,7 +480,6 @@
       "children": [
         "bundle-runtime-management",
         "bundle-python-runtime",
-        "component-python",
         "component-python-venv",
         "component-python-pypi-tools",
         "component-uv",
@@ -518,7 +511,6 @@
       "children": [
         "bundle-developer-workstation",
         "bundle-python-development",
-        "component-git",
         "component-base-devel",
         "component-cmake-ninja",
         "component-clang",
@@ -738,7 +730,6 @@
         "mode": "multi"
       },
       "children": [
-        "component-vpn-baseline",
         "component-proxychains",
         "component-mihomo",
         "component-clash-verge"
