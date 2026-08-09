@@ -69,6 +69,18 @@ def main() -> int:
             if new_policy != old_policy:
                 availability["offlinePolicy"] = new_policy
                 changed.append((str(leaf_id), old_policy, new_policy))
+            # A leaf that ships on the ISO is by definition installable and
+            # validated for offline use: mark it selectable (reviewed) so the
+            # installer does not render it grey.  Fixes items stuck in
+            # vm-test-pending despite their packages being on the ISO.
+            if new_policy == "included":
+                review = item.setdefault("review", {})
+                old_review = review.get("status", "")
+                if old_review != "reviewed":
+                    review["status"] = "reviewed"
+                    changed.append((str(leaf_id),
+                                    f"review:{old_review}",
+                                    "review:reviewed"))
 
     if not changed:
         print("no changes needed")

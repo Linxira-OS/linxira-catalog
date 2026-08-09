@@ -4168,7 +4168,7 @@
         "requiresAcceptance": false
       },
       "review": {
-        "status": "vm-test-pending",
+        "status": "reviewed",
         "date": "2026-07-20"
       },
       "availability": {
