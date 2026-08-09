@@ -126,7 +126,8 @@
       "children": [
         "brave",
         "chromium",
-        "nyxt"
+        "nyxt",
+        "firefox"
       ],
       "order": 10
     },
@@ -200,7 +201,8 @@
         "foliate",
         "ghostwriter",
         "pandoc",
-        "zathura"
+        "zathura",
+        "okular"
       ],
       "order": 40
     },
@@ -354,7 +356,8 @@
         "gitg",
         "kdiff3",
         "meld",
-        "sqlitebrowser"
+        "sqlitebrowser",
+        "kate"
       ],
       "order": 100
     },
@@ -458,7 +461,9 @@
         "gparted",
         "htop",
         "kdeconnect",
-        "partitionmanager"
+        "partitionmanager",
+        "timeshift",
+        "fastfetch"
       ],
       "order": 140
     },
@@ -489,7 +494,8 @@
         "component-go",
         "component-java",
         "component-julia",
-        "component-r"
+        "component-r",
+        "component-python"
       ],
       "order": 200
     },
@@ -515,7 +521,8 @@
         "component-cmake-ninja",
         "component-clang",
         "component-debuggers",
-        "component-doc-tools"
+        "component-doc-tools",
+        "component-git"
       ],
       "order": 210
     },
@@ -732,7 +739,8 @@
       "children": [
         "component-proxychains",
         "component-mihomo",
-        "component-clash-verge"
+        "component-clash-verge",
+        "component-vpn-baseline"
       ],
       "order": 300
     }
@@ -1230,7 +1238,8 @@
       "presentation": {
         "recommended": true,
         "defaultSelected": true,
-        "order": 10
+        "order": 10,
+        "installerVisible": false
       }
     },
     {
@@ -1802,7 +1811,8 @@
       "presentation": {
         "recommended": true,
         "defaultSelected": false,
-        "order": 10
+        "order": 10,
+        "installerVisible": false
       }
     },
     {
@@ -2983,7 +2993,8 @@
       "presentation": {
         "recommended": true,
         "defaultSelected": false,
-        "order": 10
+        "order": 10,
+        "installerVisible": false
       }
     },
     {
@@ -4474,7 +4485,8 @@
       "presentation": {
         "recommended": true,
         "defaultSelected": true,
-        "order": 60
+        "order": 60,
+        "installerVisible": false
       }
     },
     {
@@ -5942,7 +5954,8 @@
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
-        "order": 35
+        "order": 35,
+        "installerVisible": false
       }
     },
     {
@@ -6507,7 +6520,8 @@
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
-        "order": 31
+        "order": 31,
+        "installerVisible": false
       }
     }
   ],
@@ -6565,7 +6579,8 @@
       "presentation": {
         "recommended": true,
         "defaultSelected": false,
-        "order": 1
+        "order": 1,
+        "installerVisible": false
       },
       "criticalSystemCapability": false
     },
@@ -7211,7 +7226,8 @@
       "presentation": {
         "recommended": true,
         "defaultSelected": false,
-        "order": 1
+        "order": 1,
+        "installerVisible": false
       },
       "criticalSystemCapability": false
     },
@@ -9608,7 +9624,8 @@
       "presentation": {
         "recommended": true,
         "defaultSelected": false,
-        "order": 1
+        "order": 1,
+        "installerVisible": false
       },
       "criticalSystemCapability": false
     },
