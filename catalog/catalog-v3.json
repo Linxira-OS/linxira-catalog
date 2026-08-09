@@ -740,7 +740,8 @@
       "children": [
         "component-proxychains",
         "component-mihomo",
-        "component-clash-verge"
+        "component-clash-verge",
+        "component-vpn-baseline"
       ],
       "order": 300
     }
@@ -10780,7 +10781,8 @@
         "optional": [
           "component-proxychains",
           "component-mihomo",
-          "component-clash-verge"
+          "component-clash-verge",
+          "component-vpn-baseline"
         ]
       },
       "criticalSystemCapability": false,
