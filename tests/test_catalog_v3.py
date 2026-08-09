@@ -204,7 +204,9 @@ class CatalogV3Tests(unittest.TestCase):
             for item in self.catalog["applications"]
             if item["presentation"]["defaultSelected"]
         ]
-        self.assertEqual(["firefox"], selected)
+        # timeshift is the system restore baseline (product decision 2026-08-09):
+        # it must be installed by default, never left to user opt-in.
+        self.assertEqual(["firefox", "timeshift"], sorted(selected))
         self.assertTrue(self.nodes["chromium"]["presentation"]["recommended"])
         self.assertFalse(self.nodes["chromium"]["presentation"]["defaultSelected"])
         self.assertEqual(
@@ -252,6 +254,10 @@ class CatalogV3Tests(unittest.TestCase):
         for category_id in ("app-scientific", "app-system"):
             for child_id in categories[category_id]["children"]:
                 child = self.nodes[child_id]
+                # timeshift is the mandatory restore baseline, always default-selected.
+                if child_id == "timeshift":
+                    self.assertTrue(child["presentation"]["defaultSelected"], child_id)
+                    continue
                 self.assertFalse(child["presentation"]["defaultSelected"], child_id)
                 if child_id != "flatseal":
                     self.assertEqual("arch", child["source"], child_id)

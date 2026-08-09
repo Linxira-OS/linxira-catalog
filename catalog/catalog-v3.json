@@ -4185,8 +4185,8 @@
       "recommends": [],
       "conflicts": [],
       "presentation": {
-        "recommended": false,
-        "defaultSelected": false,
+        "recommended": true,
+        "defaultSelected": true,
         "order": 60
       }
     },
