@@ -463,7 +463,8 @@
         "kdeconnect",
         "partitionmanager",
         "timeshift",
-        "fastfetch"
+        "fastfetch",
+        "application-btop"
       ],
       "order": 140
     },

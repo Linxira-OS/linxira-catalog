@@ -198,8 +198,7 @@ class CatalogV3Tests(unittest.TestCase):
             self.assertEqual("unavailable", component["availability"]["status"])
             self.assertFalse(component["presentation"]["defaultSelected"])
 
-    def test_only_timeshift_is_default_selected_application(self):
-        # 2026-08-09: firefox moved to target-packages (layer-0 hidden, not in installer)
+    def test_only_firefox_is_default_selected_browser_application(self):
         selected = [
             item["id"]
             for item in self.catalog["applications"]
@@ -207,8 +206,7 @@ class CatalogV3Tests(unittest.TestCase):
         ]
         # timeshift is the system restore baseline (product decision 2026-08-09):
         # it must be installed by default, never left to user opt-in.
-        # firefox is now in target-packages (hidden), not in catalog applications view
-        self.assertEqual(["timeshift"], sorted(selected))
+        self.assertEqual(["firefox", "timeshift"], sorted(selected))
         self.assertTrue(self.nodes["chromium"]["presentation"]["recommended"])
         self.assertFalse(self.nodes["chromium"]["presentation"]["defaultSelected"])
         self.assertEqual(
