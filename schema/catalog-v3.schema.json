@@ -467,6 +467,11 @@
               ],
               "additionalProperties": false,
               "properties": {
+                "installerVisible": {
+                  "description": "Whether the item is visible in the installer selection UI (false for layer-0/1 preinstalled items)",
+                  "type": "boolean",
+                  "default": true
+                },
                 "recommended": {
                   "type": "boolean"
                 },
