@@ -33,9 +33,9 @@ DESKTOPS = [
             "type": "package",
             "ids": [
                 "bluedevil", "dolphin", "kdialog", "kinfocenter", "kscreen",
-                "konsole", "kate", "plasma-desktop", "plasma-nm", "plasma-pa",
-                "plasma-workspace", "plasma-systemmonitor", "spectacle",
-                "systemsettings", "polkit-kde-agent",
+                "konsole", "plasma-desktop", "plasma-nm", "plasma-pa",
+                "plasma-systemmonitor", "polkit-kde-agent", "sddm",
+                "systemsettings", "xdg-desktop-portal-kde",
             ],
         },
         "scope": "system",

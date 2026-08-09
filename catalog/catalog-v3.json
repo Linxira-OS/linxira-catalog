@@ -777,15 +777,14 @@
           "kinfocenter",
           "kscreen",
           "konsole",
-          "kate",
           "plasma-desktop",
           "plasma-nm",
           "plasma-pa",
-          "plasma-workspace",
           "plasma-systemmonitor",
-          "spectacle",
+          "polkit-kde-agent",
+          "sddm",
           "systemsettings",
-          "polkit-kde-agent"
+          "xdg-desktop-portal-kde"
         ]
       },
       "scope": "system",
