@@ -200,9 +200,9 @@
         "evince",
         "foliate",
         "ghostwriter",
+        "okular",
         "pandoc",
-        "zathura",
-        "okular"
+        "zathura"
       ],
       "order": 40
     },
@@ -354,10 +354,10 @@
         "docker-compose",
         "geany",
         "gitg",
+        "kate",
         "kdiff3",
         "meld",
-        "sqlitebrowser",
-        "kate"
+        "sqlitebrowser"
       ],
       "order": 100
     },
@@ -455,6 +455,7 @@
       },
       "children": [
         "bleachbit",
+        "fastfetch",
         "filelight",
         "flatseal",
         "gnome-disk-utility",
@@ -463,7 +464,6 @@
         "kdeconnect",
         "partitionmanager",
         "timeshift",
-        "fastfetch",
         "application-btop"
       ],
       "order": 140
@@ -486,6 +486,7 @@
       "children": [
         "bundle-runtime-management",
         "bundle-python-runtime",
+        "component-python",
         "component-python-venv",
         "component-python-pypi-tools",
         "component-uv",
@@ -495,8 +496,7 @@
         "component-go",
         "component-java",
         "component-julia",
-        "component-r",
-        "component-python"
+        "component-r"
       ],
       "order": 200
     },
@@ -518,12 +518,12 @@
       "children": [
         "bundle-developer-workstation",
         "bundle-python-development",
+        "component-git",
         "component-base-devel",
         "component-cmake-ninja",
         "component-clang",
         "component-debuggers",
-        "component-doc-tools",
-        "component-git"
+        "component-doc-tools"
       ],
       "order": 210
     },
@@ -740,8 +740,7 @@
       "children": [
         "component-proxychains",
         "component-mihomo",
-        "component-clash-verge",
-        "component-vpn-baseline"
+        "component-clash-verge"
       ],
       "order": 300
     }
