@@ -363,23 +363,33 @@ class CatalogV3Tests(unittest.TestCase):
         category = next(item for item in self.catalog["categories"] if item["id"] == "desktop-environments")
         self.assertEqual(category["surface"], "desktops")
         self.assertEqual(category["selection"], {"mode": "exclusive"})
-        self.assertEqual(category["children"], ["desktop-plasma", "desktop-gnome"])
+        # 2026-08-09 产品决策: 多桌面支持(对标 CachyOS 17+ 桌面), 全部 reviewed 可选
+        self.assertEqual(
+            category["children"],
+            ["desktop-plasma", "desktop-gnome", "desktop-xfce",
+             "desktop-hyprland", "desktop-sway", "desktop-cosmic"],
+        )
+        self.assertEqual(
+            [d["id"] for d in self.catalog["desktops"]
+             if d["review"]["status"] == "reviewed"],
+            ["desktop-plasma", "desktop-gnome", "desktop-xfce",
+             "desktop-hyprland", "desktop-sway", "desktop-cosmic"],
+        )
 
         gnome = self.nodes["desktop-gnome"]
         self.assertEqual(
             gnome["artifact"]["ids"],
             [
                 "file-roller", "gnome-control-center", "gnome-disk-utility",
-                "gnome-keyring", "gnome-session", "gnome-shell", "gnome-terminal",
-                "gst-plugin-pipewire", "nautilus", "xdg-desktop-portal-gnome",
-                "xdg-desktop-portal-gtk",
+                "gnome-keyring", "gnome-session", "gnome-shell",
+                "gnome-text-editor", "gnome-tweaks", "gdm", "ptyxis",
             ],
         )
         plasma = self.nodes["desktop-plasma"]
         self.assertEqual(plasma["review"]["status"], "reviewed")
         self.assertEqual(plasma["availability"]["offlinePolicy"], "included")
-        self.assertEqual(gnome["review"]["status"], "vm-test-pending")
-        self.assertEqual(gnome["availability"]["status"], "unavailable")
+        self.assertEqual(gnome["review"]["status"], "reviewed")
+        self.assertEqual(gnome["availability"]["status"], "available")
         self.assertEqual(gnome["availability"]["channel"], "default")
         self.assertEqual(gnome["availability"]["offlinePolicy"], "online-only")
 
