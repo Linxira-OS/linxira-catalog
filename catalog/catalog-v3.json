@@ -10781,8 +10781,7 @@
         "optional": [
           "component-proxychains",
           "component-mihomo",
-          "component-clash-verge",
-          "component-vpn-baseline"
+          "component-clash-verge"
         ]
       },
       "criticalSystemCapability": false,
