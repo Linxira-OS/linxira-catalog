@@ -104,7 +104,8 @@
         "desktop-xfce",
         "desktop-hyprland",
         "desktop-sway",
-        "desktop-cosmic"
+        "desktop-cosmic",
+        "desktop-cinnamon"
       ],
       "order": 1
     },
@@ -771,18 +772,23 @@
       "artifact": {
         "type": "package",
         "ids": [
+          "ark",
           "bluedevil",
           "dolphin",
+          "gwenview",
+          "kate",
           "kdialog",
           "kinfocenter",
           "kscreen",
           "konsole",
+          "okular",
           "plasma-desktop",
           "plasma-nm",
           "plasma-pa",
           "plasma-systemmonitor",
           "polkit-kde-agent",
           "sddm",
+          "spectacle",
           "systemsettings",
           "xdg-desktop-portal-kde"
         ]
@@ -816,7 +822,8 @@
         "desktop-xfce",
         "desktop-hyprland",
         "desktop-sway",
-        "desktop-cosmic"
+        "desktop-cosmic",
+        "desktop-cinnamon"
       ],
       "presentation": {
         "recommended": true,
@@ -888,7 +895,8 @@
         "desktop-xfce",
         "desktop-hyprland",
         "desktop-sway",
-        "desktop-cosmic"
+        "desktop-cosmic",
+        "desktop-cinnamon"
       ],
       "presentation": {
         "recommended": false,
@@ -904,8 +912,8 @@
         "zh_CN": "Xfce"
       },
       "description": {
-        "en": "Xfce 4.20 - a lightweight desktop for UNIX-like systems. Fast, low on system resources and visually appealing, ideal for older hardware or users who prefer a classic, snappy workflow. Uses the LightDM greeter. Requires an internet connection to install.",
-        "zh_CN": "Xfce 4.20——轻量级桌面环境，快速、省资源且观感友好，适合老硬件或偏爱经典流畅工作流的用户。使用 LightDM 登录管理器。需要联网安装。"
+        "en": "Xfce 4.20 - a lightweight desktop for UNIX-like systems. Fast, low on system resources and visually appealing, ideal for older hardware or users who prefer a classic, snappy workflow. Serves as Linxira's most stable offline fallback desktop. Uses the LightDM greeter. Ships on the ISO as an offline fallback, so it works without a network connection.",
+        "zh_CN": "Xfce 4.20——轻量级桌面环境，快速、省资源且观感友好，适合老硬件或偏爱经典流畅工作流的用户。作为 Linxira 最稳定的离线回退桌面。使用 LightDM 登录管理器。随镜像附带作为离线回退，无需联网即可使用。"
       },
       "primaryCategory": "desktop-environments",
       "tags": [
@@ -949,8 +957,8 @@
         "architectures": [
           "x86_64"
         ],
-        "networkRequired": true,
-        "offlinePolicy": "online-only",
+        "networkRequired": false,
+        "offlinePolicy": "included",
         "channel": "default"
       },
       "sizeMiB": 900,
@@ -961,7 +969,8 @@
         "desktop-gnome",
         "desktop-hyprland",
         "desktop-sway",
-        "desktop-cosmic"
+        "desktop-cosmic",
+        "desktop-cinnamon"
       ],
       "presentation": {
         "recommended": false,
@@ -1035,7 +1044,8 @@
         "desktop-gnome",
         "desktop-xfce",
         "desktop-sway",
-        "desktop-cosmic"
+        "desktop-cosmic",
+        "desktop-cinnamon"
       ],
       "presentation": {
         "recommended": false,
@@ -1110,7 +1120,8 @@
         "desktop-gnome",
         "desktop-xfce",
         "desktop-hyprland",
-        "desktop-cosmic"
+        "desktop-cosmic",
+        "desktop-cinnamon"
       ],
       "presentation": {
         "recommended": false,
@@ -1176,12 +1187,86 @@
         "desktop-gnome",
         "desktop-xfce",
         "desktop-hyprland",
-        "desktop-sway"
+        "desktop-sway",
+        "desktop-cinnamon"
       ],
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
         "order": 6
+      }
+    },
+    {
+      "id": "desktop-cinnamon",
+      "kind": "desktop",
+      "name": {
+        "en": "Cinnamon",
+        "zh_CN": "Cinnamon"
+      },
+      "description": {
+        "en": "Cinnamon - a desktop environment that feels closest to classic Windows, with a familiar taskbar, start-menu-style app launcher and system tray. Generally lighter on system resources than KDE while remaining modern and polished. Ideal for users migrating from Windows. Requires an internet connection to install.",
+        "zh_CN": "Cinnamon——最接近经典 Windows 的桌面环境，拥有熟悉的任务栏、开始菜单式应用启动器与系统托盘。整体系统占用通常低于 KDE，同时保持现代精致的外形。非常适合从 Windows 迁移过来的用户。需要联网安装。"
+      },
+      "primaryCategory": "desktop-environments",
+      "tags": [
+        "desktop",
+        "cinnamon",
+        "windows-like"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "cinnamon",
+          "nemo",
+          "cinnamon-translations",
+          "gnome-terminal",
+          "lightdm",
+          "lightdm-gtk-greeter",
+          "blueman",
+          "file-roller",
+          "gvfs"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "GPL-2.0-or-later",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-08-12"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 1000,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [
+        "desktop-plasma",
+        "desktop-gnome",
+        "desktop-xfce",
+        "desktop-hyprland",
+        "desktop-sway",
+        "desktop-cosmic"
+      ],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 7
       }
     }
   ],
