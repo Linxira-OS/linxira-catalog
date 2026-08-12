@@ -364,16 +364,19 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertEqual(category["surface"], "desktops")
         self.assertEqual(category["selection"], {"mode": "exclusive"})
         # 2026-08-09 产品决策: 多桌面支持(对标 CachyOS 17+ 桌面), 全部 reviewed 可选
+        # 2026-08-12 产品决策: 新增 Cinnamon(最接近 Windows 体验, 资源占用更低)
         self.assertEqual(
             category["children"],
             ["desktop-plasma", "desktop-gnome", "desktop-xfce",
-             "desktop-hyprland", "desktop-sway", "desktop-cosmic"],
+             "desktop-hyprland", "desktop-sway", "desktop-cosmic",
+             "desktop-cinnamon"],
         )
         self.assertEqual(
             [d["id"] for d in self.catalog["desktops"]
              if d["review"]["status"] == "reviewed"],
             ["desktop-plasma", "desktop-gnome", "desktop-xfce",
-             "desktop-hyprland", "desktop-sway", "desktop-cosmic"],
+             "desktop-hyprland", "desktop-sway", "desktop-cosmic",
+             "desktop-cinnamon"],
         )
 
         gnome = self.nodes["desktop-gnome"]

@@ -9928,7 +9928,8 @@
           "desktop-xfce",
           "desktop-hyprland",
           "desktop-sway",
-          "desktop-cosmic"
+          "desktop-cosmic",
+          "desktop-cinnamon"
         ]
       },
       "criticalSystemCapability": true,
