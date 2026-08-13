@@ -4588,8 +4588,8 @@
       "recommends": [],
       "conflicts": [],
       "presentation": {
-        "recommended": false,
-        "defaultSelected": false,
+        "recommended": true,
+        "defaultSelected": true,
         "order": 10
       }
     },
@@ -9824,7 +9824,7 @@
       "conflicts": [],
       "presentation": {
         "recommended": true,
-        "defaultSelected": false,
+        "defaultSelected": true,
         "order": 1
       },
       "criticalSystemCapability": false
@@ -9890,7 +9890,7 @@
       "conflicts": [],
       "presentation": {
         "recommended": true,
-        "defaultSelected": false,
+        "defaultSelected": true,
         "order": 2
       },
       "criticalSystemCapability": true

@@ -212,7 +212,9 @@ class CatalogV3Tests(unittest.TestCase):
         ]
         # 2026-08-13 修订: timeshift/btop 移入离线基线必装(target-packages), 从 catalog 移除,
         # 安装器软件选择页不再显示(交接文档方案 A)。
-        self.assertEqual(["firefox"], sorted(selected))
+        # 2026-08-13 追加: steam 默认勾选(游戏工具默认装载, 用户决策),
+        # 组件侧 gaming-foundations/open-gpu-runtime 同步默认。
+        self.assertEqual(["firefox", "steam"], sorted(selected))
         self.assertTrue(self.nodes["chromium"]["presentation"]["recommended"])
         self.assertFalse(self.nodes["chromium"]["presentation"]["defaultSelected"])
         self.assertEqual(
@@ -225,7 +227,14 @@ class CatalogV3Tests(unittest.TestCase):
         # 2026-08-13 追加: docker/docker-compose 归入运行时(cap-containers)并默认选中(用户确认,
         #   容器运行时属系统能力, 与软件页划分: 运行时页默认勾选, 软件页用户可选)
         self.assertEqual(
-            ["component-distrobox", "component-docker", "component-docker-compose", "component-podman"],
+            [
+                "component-distrobox",
+                "component-docker",
+                "component-docker-compose",
+                "component-gaming-foundations",
+                "component-open-gpu-runtime",
+                "component-podman",
+            ],
             sorted(
                 item["id"]
                 for item in self.catalog["components"]
