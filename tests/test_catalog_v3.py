@@ -370,16 +370,11 @@ class CatalogV3Tests(unittest.TestCase):
         category = next(item for item in self.catalog["categories"] if item["id"] == "desktop-environments")
         self.assertEqual(category["surface"], "desktops")
         self.assertEqual(category["selection"], {"mode": "exclusive"})
-        # 2026-08-09 产品决策: 多桌面支持(对标 CachyOS 17+ 桌面), 全部 reviewed 可选
-        # 2026-08-12 产品决策: 新增 Cinnamon(最接近 Windows 体验, 资源占用更低)
-        # 2026-08-13 产品决策: 新增 LXQt/LXDE/MATE/Budgie/i3/Openbox; 全部联网安装
+        # 2026-08-13 产品决策: 桌面选择面收窄为 KDE Plasma / 服务器(无桌面);
+        # 其余桌面(gnome/xfce/...)保留元数据(installerVisible:false), 暂不进入选择面。
         self.assertEqual(
             category["children"],
-            ["desktop-plasma", "desktop-gnome", "desktop-xfce",
-             "desktop-hyprland", "desktop-sway", "desktop-cosmic",
-             "desktop-cinnamon", "desktop-lxqt", "desktop-lxde",
-             "desktop-mate", "desktop-budgie", "desktop-i3",
-             "desktop-openbox"],
+            ["desktop-plasma", "desktop-server"],
         )
         self.assertEqual(
             [d["id"] for d in self.catalog["desktops"]
@@ -388,7 +383,7 @@ class CatalogV3Tests(unittest.TestCase):
              "desktop-hyprland", "desktop-sway", "desktop-cosmic",
              "desktop-cinnamon", "desktop-lxqt", "desktop-lxde",
              "desktop-mate", "desktop-budgie", "desktop-i3",
-             "desktop-openbox"],
+             "desktop-openbox", "desktop-server"],
         )
 
         xfce = self.nodes["desktop-xfce"]

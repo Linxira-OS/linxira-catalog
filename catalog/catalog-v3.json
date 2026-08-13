@@ -100,18 +100,7 @@
       },
       "children": [
         "desktop-plasma",
-        "desktop-gnome",
-        "desktop-xfce",
-        "desktop-hyprland",
-        "desktop-sway",
-        "desktop-cosmic",
-        "desktop-cinnamon",
-        "desktop-lxqt",
-        "desktop-lxde",
-        "desktop-mate",
-        "desktop-budgie",
-        "desktop-i3",
-        "desktop-openbox"
+        "desktop-server"
       ],
       "order": 1
     },
@@ -820,7 +809,8 @@
         "desktop-hyprland",
         "desktop-sway",
         "desktop-cosmic",
-        "desktop-cinnamon"
+        "desktop-cinnamon",
+        "desktop-server"
       ],
       "presentation": {
         "recommended": true,
@@ -893,12 +883,14 @@
         "desktop-hyprland",
         "desktop-sway",
         "desktop-cosmic",
-        "desktop-cinnamon"
+        "desktop-cinnamon",
+        "desktop-server"
       ],
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
-        "order": 2
+        "order": 2,
+        "installerVisible": false
       }
     },
     {
@@ -973,12 +965,14 @@
         "desktop-mate",
         "desktop-budgie",
         "desktop-i3",
-        "desktop-openbox"
+        "desktop-openbox",
+        "desktop-server"
       ],
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
-        "order": 3
+        "order": 3,
+        "installerVisible": false
       }
     },
     {
@@ -1048,12 +1042,14 @@
         "desktop-xfce",
         "desktop-sway",
         "desktop-cosmic",
-        "desktop-cinnamon"
+        "desktop-cinnamon",
+        "desktop-server"
       ],
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
-        "order": 4
+        "order": 4,
+        "installerVisible": false
       }
     },
     {
@@ -1124,12 +1120,14 @@
         "desktop-xfce",
         "desktop-hyprland",
         "desktop-cosmic",
-        "desktop-cinnamon"
+        "desktop-cinnamon",
+        "desktop-server"
       ],
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
-        "order": 5
+        "order": 5,
+        "installerVisible": false
       }
     },
     {
@@ -1191,12 +1189,14 @@
         "desktop-xfce",
         "desktop-hyprland",
         "desktop-sway",
-        "desktop-cinnamon"
+        "desktop-cinnamon",
+        "desktop-server"
       ],
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
-        "order": 6
+        "order": 6,
+        "installerVisible": false
       }
     },
     {
@@ -1270,12 +1270,14 @@
         "desktop-mate",
         "desktop-budgie",
         "desktop-i3",
-        "desktop-openbox"
+        "desktop-openbox",
+        "desktop-server"
       ],
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
-        "order": 7
+        "order": 7,
+        "installerVisible": false
       }
     },
     {
@@ -1346,12 +1348,14 @@
         "desktop-mate",
         "desktop-budgie",
         "desktop-i3",
-        "desktop-openbox"
+        "desktop-openbox",
+        "desktop-server"
       ],
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
-        "order": 8
+        "order": 8,
+        "installerVisible": false
       }
     },
     {
@@ -1422,12 +1426,14 @@
         "desktop-mate",
         "desktop-budgie",
         "desktop-i3",
-        "desktop-openbox"
+        "desktop-openbox",
+        "desktop-server"
       ],
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
-        "order": 9
+        "order": 9,
+        "installerVisible": false
       }
     },
     {
@@ -1499,12 +1505,14 @@
         "desktop-lxde",
         "desktop-budgie",
         "desktop-i3",
-        "desktop-openbox"
+        "desktop-openbox",
+        "desktop-server"
       ],
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
-        "order": 10
+        "order": 10,
+        "installerVisible": false
       }
     },
     {
@@ -1576,12 +1584,14 @@
         "desktop-lxde",
         "desktop-mate",
         "desktop-i3",
-        "desktop-openbox"
+        "desktop-openbox",
+        "desktop-server"
       ],
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
-        "order": 11
+        "order": 11,
+        "installerVisible": false
       }
     },
     {
@@ -1656,12 +1666,14 @@
         "desktop-lxde",
         "desktop-mate",
         "desktop-budgie",
-        "desktop-openbox"
+        "desktop-openbox",
+        "desktop-server"
       ],
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
-        "order": 12
+        "order": 12,
+        "installerVisible": false
       }
     },
     {
@@ -1736,12 +1748,84 @@
         "desktop-lxde",
         "desktop-mate",
         "desktop-budgie",
-        "desktop-i3"
+        "desktop-i3",
+        "desktop-server"
       ],
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
-        "order": 13
+        "order": 13,
+        "installerVisible": false
+      }
+    },
+    {
+      "id": "desktop-server",
+      "kind": "desktop",
+      "name": {
+        "en": "Server (no desktop)",
+        "zh_CN": "服务器（无桌面）"
+      },
+      "description": {
+        "en": "Headless server mode: no desktop environment or display manager is installed. System services and command-line workflows only. A desktop can be installed later from the repositories.",
+        "zh_CN": "无桌面服务器模式：不安装桌面环境与显示管理器，仅系统服务与命令行工作流。之后可从软件仓库补装桌面。"
+      },
+      "primaryCategory": "desktop-environments",
+      "tags": [
+        "desktop",
+        "server",
+        "headless"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": []
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "GPL-2.0-only",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-08-13"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": false,
+        "offlinePolicy": "included",
+        "channel": "default"
+      },
+      "sizeMiB": 0,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [
+        "desktop-plasma",
+        "desktop-gnome",
+        "desktop-xfce",
+        "desktop-hyprland",
+        "desktop-sway",
+        "desktop-cosmic",
+        "desktop-cinnamon",
+        "desktop-lxqt",
+        "desktop-lxde",
+        "desktop-mate",
+        "desktop-budgie",
+        "desktop-i3",
+        "desktop-openbox"
+      ],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 1
       }
     }
   ],
@@ -10279,18 +10363,7 @@
         "recommended": [],
         "optional": [
           "desktop-plasma",
-          "desktop-gnome",
-          "desktop-xfce",
-          "desktop-hyprland",
-          "desktop-sway",
-          "desktop-cosmic",
-          "desktop-cinnamon",
-          "desktop-lxqt",
-          "desktop-lxde",
-          "desktop-mate",
-          "desktop-budgie",
-          "desktop-i3",
-          "desktop-openbox"
+          "desktop-server"
         ]
       },
       "criticalSystemCapability": true,
