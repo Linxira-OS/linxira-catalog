@@ -355,8 +355,6 @@
       "children": [
         "code",
         "dbeaver",
-        "docker",
-        "docker-compose",
         "geany",
         "gitg",
         "kdiff3",
@@ -672,7 +670,9 @@
         "component-buildah",
         "component-skopeo",
         "component-distrobox",
-        "component-apptainer"
+        "component-apptainer",
+        "component-docker",
+        "component-docker-compose"
       ],
       "order": 270
     },
@@ -6069,118 +6069,6 @@
       }
     },
     {
-      "id": "docker",
-      "kind": "application",
-      "name": {
-        "en": "Docker",
-        "zh_CN": "Docker"
-      },
-      "description": {
-        "en": "Container runtime and tooling.",
-        "zh_CN": "容器运行时与工具链。"
-      },
-      "primaryCategory": "app-development",
-      "tags": [
-        "container"
-      ],
-      "selection": {
-        "mode": "multi"
-      },
-      "provider": "pacman",
-      "artifact": {
-        "type": "package",
-        "ids": [
-          "docker"
-        ]
-      },
-      "scope": "system",
-      "source": "arch",
-      "license": {
-        "classification": "open-source",
-        "spdx": "Apache-2.0",
-        "redistributable": true,
-        "requiresAcceptance": false
-      },
-      "review": {
-        "status": "reviewed",
-        "date": "2026-08-04"
-      },
-      "availability": {
-        "status": "available",
-        "architectures": [
-          "x86_64"
-        ],
-        "networkRequired": true,
-        "offlinePolicy": "online-only",
-        "channel": "default"
-      },
-      "sizeMiB": 300,
-      "requires": [],
-      "recommends": [],
-      "conflicts": [],
-      "presentation": {
-        "recommended": false,
-        "defaultSelected": false,
-        "order": 25
-      }
-    },
-    {
-      "id": "docker-compose",
-      "kind": "application",
-      "name": {
-        "en": "Docker Compose",
-        "zh_CN": "Docker Compose"
-      },
-      "description": {
-        "en": "Multi-container orchestration.",
-        "zh_CN": "多容器编排工具。"
-      },
-      "primaryCategory": "app-development",
-      "tags": [
-        "container"
-      ],
-      "selection": {
-        "mode": "multi"
-      },
-      "provider": "pacman",
-      "artifact": {
-        "type": "package",
-        "ids": [
-          "docker-compose"
-        ]
-      },
-      "scope": "system",
-      "source": "arch",
-      "license": {
-        "classification": "open-source",
-        "spdx": "Apache-2.0",
-        "redistributable": true,
-        "requiresAcceptance": false
-      },
-      "review": {
-        "status": "reviewed",
-        "date": "2026-08-04"
-      },
-      "availability": {
-        "status": "available",
-        "architectures": [
-          "x86_64"
-        ],
-        "networkRequired": true,
-        "offlinePolicy": "online-only",
-        "channel": "default"
-      },
-      "sizeMiB": 30,
-      "requires": [],
-      "recommends": [],
-      "conflicts": [],
-      "presentation": {
-        "recommended": false,
-        "defaultSelected": false,
-        "order": 26
-      }
-    },
-    {
       "id": "gitg",
       "kind": "application",
       "name": {
@@ -10249,6 +10137,120 @@
         "order": 4
       },
       "criticalSystemCapability": true
+    },
+    {
+      "id": "component-docker",
+      "kind": "component",
+      "name": {
+        "en": "Docker",
+        "zh_CN": "Docker"
+      },
+      "description": {
+        "en": "Container runtime and tooling.",
+        "zh_CN": "容器运行时与工具链。"
+      },
+      "primaryCategory": "cap-containers",
+      "tags": [
+        "containers"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "docker"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-08-04"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 300,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": true,
+        "order": 6
+      },
+      "criticalSystemCapability": false
+    },
+    {
+      "id": "component-docker-compose",
+      "kind": "component",
+      "name": {
+        "en": "Docker Compose",
+        "zh_CN": "Docker Compose"
+      },
+      "description": {
+        "en": "Multi-container orchestration.",
+        "zh_CN": "多容器编排工具。"
+      },
+      "primaryCategory": "cap-containers",
+      "tags": [
+        "containers"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "docker-compose"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-08-04"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 30,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": true,
+        "order": 7
+      },
+      "criticalSystemCapability": false
     }
   ],
   "bundles": [
@@ -10652,8 +10654,6 @@
         "optional": [
           "code",
           "dbeaver",
-          "docker",
-          "docker-compose",
           "geany",
           "gitg",
           "kdiff3",
@@ -11113,7 +11113,9 @@
           "component-buildah",
           "component-skopeo",
           "component-distrobox",
-          "component-apptainer"
+          "component-apptainer",
+          "component-docker",
+          "component-docker-compose"
         ]
       },
       "criticalSystemCapability": false,
