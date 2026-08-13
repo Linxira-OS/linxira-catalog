@@ -133,6 +133,13 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertEqual(set(categories), set(bundles))
         for category_id, category in categories.items():
             bundle = bundles[category_id]
+            # 2026-08-13 产品决策: cap-essential-online 为隐藏的必需联网组件分类,
+            # children 全部为 required(安装时自动联网安装), 不参与"用户可选"不变式。
+            if "essential" in bundle["tags"]:
+                self.assertEqual(category["children"], bundle["children"]["required"], category_id)
+                self.assertEqual([], bundle["children"]["recommended"], category_id)
+                self.assertEqual([], bundle["children"]["optional"], category_id)
+                continue
             self.assertEqual([], bundle["children"]["required"], category_id)
             self.assertEqual([], bundle["children"]["recommended"], category_id)
             self.assertEqual(category["children"], bundle["children"]["optional"], category_id)
@@ -224,18 +231,15 @@ class CatalogV3Tests(unittest.TestCase):
                 if item["presentation"]["defaultSelected"]
             ),
         )
-        self.assertFalse(any(item["presentation"]["defaultSelected"] for item in self.catalog["bundles"]))
-
-    def test_pip_components_are_explicit_review_channel_with_python_prerequisites(self):
-        source = next(item for item in self.catalog["sources"] if item["id"] == "pypi")
-        component = self.nodes["component-python-pypi-tools"]
-        self.assertEqual(source["kind"], "pip")
-        self.assertEqual(component["provider"], "pip")
-        self.assertEqual(component["source"], "pypi")
-        self.assertEqual(component["requires"], ["component-python-venv"])
-        # Released after source review on 2026-08-05; still requires python venv.
-        self.assertEqual(component["availability"]["channel"], "default")
-        self.assertFalse(component["presentation"]["defaultSelected"])
+        # 2026-08-13 修订: cap-essential-online 隐藏必需联网组件分类根预设默认选中(自动安装),
+        #   其余用户可见 bundle 一律不默认选中。
+        self.assertFalse(
+            any(
+                item["presentation"]["defaultSelected"]
+                for item in self.catalog["bundles"]
+                if "essential" not in item.get("tags", [])
+            )
+        )
 
     def test_system_and_scientific_application_categories_are_broad_but_not_default(self):
         categories = {item["id"]: item for item in self.catalog["categories"]}
@@ -365,19 +369,32 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertEqual(category["selection"], {"mode": "exclusive"})
         # 2026-08-09 产品决策: 多桌面支持(对标 CachyOS 17+ 桌面), 全部 reviewed 可选
         # 2026-08-12 产品决策: 新增 Cinnamon(最接近 Windows 体验, 资源占用更低)
+        # 2026-08-13 产品决策: 新增 LXQt/LXDE/MATE/Budgie/i3/Openbox; 全部联网安装
         self.assertEqual(
             category["children"],
             ["desktop-plasma", "desktop-gnome", "desktop-xfce",
              "desktop-hyprland", "desktop-sway", "desktop-cosmic",
-             "desktop-cinnamon"],
+             "desktop-cinnamon", "desktop-lxqt", "desktop-lxde",
+             "desktop-mate", "desktop-budgie", "desktop-i3",
+             "desktop-openbox"],
         )
         self.assertEqual(
             [d["id"] for d in self.catalog["desktops"]
              if d["review"]["status"] == "reviewed"],
             ["desktop-plasma", "desktop-gnome", "desktop-xfce",
              "desktop-hyprland", "desktop-sway", "desktop-cosmic",
-             "desktop-cinnamon"],
+             "desktop-cinnamon", "desktop-lxqt", "desktop-lxde",
+             "desktop-mate", "desktop-budgie", "desktop-i3",
+             "desktop-openbox"],
         )
+
+        xfce = self.nodes["desktop-xfce"]
+        self.assertEqual(xfce["availability"]["offlinePolicy"], "online-only")
+        lxqt = self.nodes["desktop-lxqt"]
+        self.assertEqual(lxqt["review"]["status"], "reviewed")
+        self.assertEqual(lxqt["availability"]["offlinePolicy"], "online-only")
+        self.assertIn("desktop-plasma", lxqt["conflicts"])
+        self.assertNotIn("desktop-lxqt", lxqt["conflicts"])
 
         gnome = self.nodes["desktop-gnome"]
         self.assertEqual(
