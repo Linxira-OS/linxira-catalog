@@ -91,6 +91,12 @@ class CatalogV3Tests(unittest.TestCase):
         categorized = self.catalog["desktops"] + self.catalog["applications"] + self.catalog["components"]
 
         for node in categorized:
+            # 2026-08-13 交接文档 Bug #1: 预装项(timeshift/btop/firefox/okular/kate/fastfetch/
+            # python/git/vpn-baseline)从分类 children 移除, 安装器视图模块只渲染分类内节点,
+            # 实现"预装不进选择页"。条目保留(installerVisible:false)以维持依赖图与元数据完整。
+            if not node.get("presentation", {}).get("installerVisible", True):
+                self.assertEqual(0, ownership[node["id"]], node["id"])
+                continue
             self.assertEqual(1, ownership[node["id"]], node["id"])
             self.assertIn(node["id"], category_by_id[node["primaryCategory"]]["children"])
 
@@ -133,13 +139,6 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertEqual(set(categories), set(bundles))
         for category_id, category in categories.items():
             bundle = bundles[category_id]
-            # 2026-08-13 产品决策: cap-essential-online 为隐藏的必需联网组件分类,
-            # children 全部为 required(安装时自动联网安装), 不参与"用户可选"不变式。
-            if "essential" in bundle["tags"]:
-                self.assertEqual(category["children"], bundle["children"]["required"], category_id)
-                self.assertEqual([], bundle["children"]["recommended"], category_id)
-                self.assertEqual([], bundle["children"]["optional"], category_id)
-                continue
             self.assertEqual([], bundle["children"]["required"], category_id)
             self.assertEqual([], bundle["children"]["recommended"], category_id)
             self.assertEqual(category["children"], bundle["children"]["optional"], category_id)
@@ -211,9 +210,9 @@ class CatalogV3Tests(unittest.TestCase):
             for item in self.catalog["applications"]
             if item["presentation"]["defaultSelected"]
         ]
-        # timeshift is the system restore baseline (product decision 2026-08-09):
-        # it must be installed by default, never left to user opt-in.
-        self.assertEqual(["firefox", "timeshift"], sorted(selected))
+        # 2026-08-13 修订: timeshift/btop 移入离线基线必装(target-packages), 从 catalog 移除,
+        # 安装器软件选择页不再显示(交接文档方案 A)。
+        self.assertEqual(["firefox"], sorted(selected))
         self.assertTrue(self.nodes["chromium"]["presentation"]["recommended"])
         self.assertFalse(self.nodes["chromium"]["presentation"]["defaultSelected"])
         self.assertEqual(
@@ -231,13 +230,11 @@ class CatalogV3Tests(unittest.TestCase):
                 if item["presentation"]["defaultSelected"]
             ),
         )
-        # 2026-08-13 修订: cap-essential-online 隐藏必需联网组件分类根预设默认选中(自动安装),
-        #   其余用户可见 bundle 一律不默认选中。
+        # 2026-08-13 修订: 隐藏预设 cap-essential-online 已随方案 A 移除, 全部 bundle 不默认选中。
         self.assertFalse(
             any(
                 item["presentation"]["defaultSelected"]
                 for item in self.catalog["bundles"]
-                if "essential" not in item.get("tags", [])
             )
         )
 
@@ -252,16 +249,11 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertIn("gnome-disk-utility", categories["app-system"]["children"])
         self.assertIn("filelight", categories["app-system"]["children"])
         self.assertIn("htop", categories["app-system"]["children"])
-        self.assertIn("fastfetch", categories["app-system"]["children"])
         self.assertIn("flatseal", categories["app-system"]["children"])
 
         for category_id in ("app-scientific", "app-system"):
             for child_id in categories[category_id]["children"]:
                 child = self.nodes[child_id]
-                # timeshift is the mandatory restore baseline, always default-selected.
-                if child_id == "timeshift":
-                    self.assertTrue(child["presentation"]["defaultSelected"], child_id)
-                    continue
                 self.assertFalse(child["presentation"]["defaultSelected"], child_id)
                 if child_id != "flatseal":
                     self.assertEqual("arch", child["source"], child_id)

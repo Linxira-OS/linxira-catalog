@@ -116,28 +116,6 @@
       "order": 1
     },
     {
-      "id": "cap-essential-online",
-      "kind": "category",
-      "surface": "applications",
-      "hidden": true,
-      "name": {
-        "en": "Essential online components",
-        "zh_CN": "内置必需联网组件"
-      },
-      "description": {
-        "en": "Built-in components that are always installed via the online repositories during installation. Hidden from the software picker; installed automatically when a network is available, otherwise deferred to the first boot completion tool.",
-        "zh_CN": "安装过程中必须通过联网仓库自动安装的内置组件。对软件选择页隐藏，有网时自动安装，无网时推迟到首启续装工具补装。"
-      },
-      "selection": {
-        "mode": "multi"
-      },
-      "children": [
-        "timeshift",
-        "application-btop"
-      ],
-      "order": 2
-    },
-    {
       "id": "app-web",
       "kind": "category",
       "surface": "applications",
@@ -155,7 +133,6 @@
       "children": [
         "brave",
         "chromium",
-        "firefox",
         "nyxt"
       ],
       "order": 10
@@ -229,7 +206,6 @@
         "evince",
         "foliate",
         "ghostwriter",
-        "okular",
         "pandoc",
         "zathura"
       ],
@@ -383,7 +359,6 @@
         "docker-compose",
         "geany",
         "gitg",
-        "kate",
         "kdiff3",
         "meld",
         "sqlitebrowser",
@@ -485,7 +460,6 @@
       },
       "children": [
         "bleachbit",
-        "fastfetch",
         "filelight",
         "flatseal",
         "gnome-disk-utility",
@@ -514,7 +488,6 @@
       "children": [
         "bundle-runtime-management",
         "bundle-python-runtime",
-        "component-python",
         "component-python-venv",
         "component-uv",
         "component-miniforge",
@@ -545,7 +518,6 @@
       "children": [
         "bundle-developer-workstation",
         "bundle-python-development",
-        "component-git",
         "component-base-devel",
         "component-cmake-ninja",
         "component-clang",
@@ -767,8 +739,7 @@
       "children": [
         "component-proxychains",
         "component-mihomo",
-        "component-clash-verge",
-        "component-vpn-baseline"
+        "component-clash-verge"
       ],
       "order": 300
     }
@@ -5080,64 +5051,6 @@
       }
     },
     {
-      "id": "timeshift",
-      "kind": "application",
-      "name": {
-        "en": "Timeshift",
-        "zh_CN": "Timeshift"
-      },
-      "description": {
-        "en": "System snapshot management utility.",
-        "zh_CN": "系统快照管理工具。"
-      },
-      "primaryCategory": "cap-essential-online",
-      "tags": [
-        "backup",
-        "recovery"
-      ],
-      "selection": {
-        "mode": "multi"
-      },
-      "provider": "pacman",
-      "artifact": {
-        "type": "package",
-        "ids": [
-          "timeshift"
-        ]
-      },
-      "scope": "system",
-      "source": "arch",
-      "license": {
-        "classification": "open-source",
-        "spdx": "GPL-3.0-or-later",
-        "redistributable": true,
-        "requiresAcceptance": false
-      },
-      "review": {
-        "status": "reviewed",
-        "date": "2026-07-20"
-      },
-      "availability": {
-        "status": "available",
-        "architectures": [
-          "x86_64"
-        ],
-        "networkRequired": true,
-        "offlinePolicy": "online-only",
-        "channel": "default"
-      },
-      "sizeMiB": 20,
-      "requires": [],
-      "recommends": [],
-      "conflicts": [],
-      "presentation": {
-        "recommended": true,
-        "defaultSelected": true,
-        "order": 60,
-        "installerVisible": false
-      }
-    },
-    {
       "id": "bleachbit",
       "kind": "application",
       "name": {
@@ -7111,66 +7024,6 @@
         "recommended": false,
         "defaultSelected": false,
         "order": 18
-      }
-    },
-    {
-      "id": "application-btop",
-      "kind": "application",
-      "name": {
-        "en": "btop",
-        "zh_CN": "btop"
-      },
-      "description": {
-        "en": "Resource monitor and task manager with CPU/GPU power (RAPL) display.",
-        "zh_CN": "终端资源监视器/任务管理器，支持 CPU/GPU 功耗显示（RAPL）。"
-      },
-      "primaryCategory": "cap-essential-online",
-      "tags": [
-        "monitor",
-        "cli",
-        "system",
-        "essential"
-      ],
-      "selection": {
-        "mode": "multi"
-      },
-      "provider": "pacman",
-      "artifact": {
-        "type": "package",
-        "ids": [
-          "btop"
-        ]
-      },
-      "scope": "system",
-      "source": "arch",
-      "license": {
-        "classification": "open-source",
-        "spdx": "Apache-2.0",
-        "redistributable": true,
-        "requiresAcceptance": false
-      },
-      "review": {
-        "status": "reviewed",
-        "date": "2026-08-06"
-      },
-      "availability": {
-        "status": "available",
-        "architectures": [
-          "x86_64"
-        ],
-        "networkRequired": true,
-        "offlinePolicy": "online-only",
-        "channel": "default"
-      },
-      "sizeMiB": 2,
-      "requires": [],
-      "recommends": [],
-      "conflicts": [],
-      "presentation": {
-        "recommended": false,
-        "defaultSelected": false,
-        "order": 31,
-        "installerVisible": false
       }
     }
   ],
@@ -10469,7 +10322,6 @@
         "optional": [
           "brave",
           "chromium",
-          "firefox",
           "nyxt"
         ]
       },
@@ -10579,7 +10431,6 @@
           "evince",
           "foliate",
           "ghostwriter",
-          "okular",
           "pandoc",
           "zathura"
         ]
@@ -10805,7 +10656,6 @@
           "docker-compose",
           "geany",
           "gitg",
-          "kate",
           "kdiff3",
           "meld",
           "sqlitebrowser",
@@ -10955,7 +10805,6 @@
         "recommended": [],
         "optional": [
           "bleachbit",
-          "fastfetch",
           "filelight",
           "flatseal",
           "gnome-disk-utility",
@@ -10969,41 +10818,6 @@
       "presentation": {
         "defaultSelected": false,
         "order": 140
-      }
-    },
-    {
-      "id": "cap-essential-online",
-      "kind": "bundle",
-      "surface": "applications",
-      "hidden": true,
-      "name": {
-        "en": "Essential online components",
-        "zh_CN": "内置必需联网组件"
-      },
-      "description": {
-        "en": "Hidden category-root preset for built-in components that must be installed online.",
-        "zh_CN": "内置必需联网组件的隐藏分类根预设。"
-      },
-      "primaryCategory": "cap-essential-online",
-      "tags": [
-        "category-root",
-        "essential"
-      ],
-      "selection": {
-        "mode": "preset"
-      },
-      "children": {
-        "required": [
-          "timeshift",
-          "application-btop"
-        ],
-        "recommended": [],
-        "optional": []
-      },
-      "criticalSystemCapability": true,
-      "presentation": {
-        "defaultSelected": true,
-        "order": 2
       }
     },
     {
@@ -11031,7 +10845,6 @@
         "optional": [
           "bundle-runtime-management",
           "bundle-python-runtime",
-          "component-python",
           "component-python-venv",
           "component-uv",
           "component-miniforge",
@@ -11074,7 +10887,6 @@
         "optional": [
           "bundle-developer-workstation",
           "bundle-python-development",
-          "component-git",
           "component-base-devel",
           "component-cmake-ninja",
           "component-clang",
@@ -11400,9 +11212,7 @@
       },
       "children": {
         "required": [],
-        "recommended": [
-          "component-vpn-baseline"
-        ],
+        "recommended": [],
         "optional": [
           "component-proxychains",
           "component-mihomo",
