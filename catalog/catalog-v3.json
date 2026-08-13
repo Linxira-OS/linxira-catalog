@@ -110,6 +110,28 @@
       "order": 1
     },
     {
+      "id": "cap-essential-online",
+      "kind": "category",
+      "surface": "applications",
+      "hidden": true,
+      "name": {
+        "en": "Essential online components",
+        "zh_CN": "内置必需联网组件"
+      },
+      "description": {
+        "en": "Built-in components that are always installed via the online repositories during installation. Hidden from the software picker; installed automatically when a network is available, otherwise deferred to the first boot completion tool.",
+        "zh_CN": "安装过程中必须通过联网仓库自动安装的内置组件。对软件选择页隐藏，有网时自动安装，无网时推迟到首启续装工具补装。"
+      },
+      "selection": {
+        "mode": "multi"
+      },
+      "children": [
+        "timeshift",
+        "application-btop"
+      ],
+      "order": 2
+    },
+    {
       "id": "app-web",
       "kind": "category",
       "surface": "applications",
@@ -358,7 +380,8 @@
         "kate",
         "kdiff3",
         "meld",
-        "sqlitebrowser"
+        "sqlitebrowser",
+        "zed"
       ],
       "order": 100
     },
@@ -463,9 +486,7 @@
         "gparted",
         "htop",
         "kdeconnect",
-        "partitionmanager",
-        "timeshift",
-        "application-btop"
+        "partitionmanager"
       ],
       "order": 140
     },
@@ -489,7 +510,6 @@
         "bundle-python-runtime",
         "component-python",
         "component-python-venv",
-        "component-python-pypi-tools",
         "component-uv",
         "component-miniforge",
         "component-nodejs",
@@ -957,8 +977,8 @@
         "architectures": [
           "x86_64"
         ],
-        "networkRequired": false,
-        "offlinePolicy": "included",
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
         "channel": "default"
       },
       "sizeMiB": 900,
@@ -970,7 +990,13 @@
         "desktop-hyprland",
         "desktop-sway",
         "desktop-cosmic",
-        "desktop-cinnamon"
+        "desktop-cinnamon",
+        "desktop-lxqt",
+        "desktop-lxde",
+        "desktop-mate",
+        "desktop-budgie",
+        "desktop-i3",
+        "desktop-openbox"
       ],
       "presentation": {
         "recommended": false,
@@ -1261,12 +1287,484 @@
         "desktop-xfce",
         "desktop-hyprland",
         "desktop-sway",
-        "desktop-cosmic"
+        "desktop-cosmic",
+        "desktop-lxqt",
+        "desktop-lxde",
+        "desktop-mate",
+        "desktop-budgie",
+        "desktop-i3",
+        "desktop-openbox"
       ],
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
         "order": 7
+      }
+    },
+    {
+      "id": "desktop-lxqt",
+      "kind": "desktop",
+      "name": {
+        "en": "LXQt",
+        "zh_CN": "LXQt"
+      },
+      "description": {
+        "en": "LXQt - a lightweight, classic Qt desktop that is fast and stable, ideal for older or low-end hardware. Combines the friendliness of a traditional desktop with low memory usage, offering a taskbar, desktop icons and a classic start menu. Requires an internet connection to install.",
+        "zh_CN": "LXQt——轻量、经典风格的 Qt 桌面，快速稳定，非常适合老款或低配置硬件。兼具传统桌面的易用性与低内存占用，提供任务栏、桌面图标与经典开始菜单。需要联网安装。"
+      },
+      "primaryCategory": "desktop-environments",
+      "tags": [
+        "desktop",
+        "lxqt",
+        "lightweight",
+        "qt"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "lxqt",
+          "lxqt-qtplugin",
+          "qterminal",
+          "pcmanfm-qt",
+          "sddm"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "LGPL-2.1-or-later",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-08-13"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 500,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [
+        "desktop-plasma",
+        "desktop-gnome",
+        "desktop-xfce",
+        "desktop-hyprland",
+        "desktop-sway",
+        "desktop-cosmic",
+        "desktop-cinnamon",
+        "desktop-lxde",
+        "desktop-mate",
+        "desktop-budgie",
+        "desktop-i3",
+        "desktop-openbox"
+      ],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 8
+      }
+    },
+    {
+      "id": "desktop-lxde",
+      "kind": "desktop",
+      "name": {
+        "en": "LXDE",
+        "zh_CN": "LXDE"
+      },
+      "description": {
+        "en": "LXDE - an extremely lightweight classic desktop environment built on GTK 2. One of the lightest full desktops available, ideal for very old hardware or minimal installations. Simple, familiar and extremely frugal with system resources. Requires an internet connection to install.",
+        "zh_CN": "LXDE——基于 GTK2 的极轻量经典桌面环境，是现有最轻量的完整桌面之一，非常适合老旧硬件或简约安装。界面简单熟悉，对系统资源极度节省。需要联网安装。"
+      },
+      "primaryCategory": "desktop-environments",
+      "tags": [
+        "desktop",
+        "lxde",
+        "lightweight",
+        "gtk"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "lxde",
+          "lxde-common",
+          "lxterminal",
+          "pcmanfm",
+          "lxdm"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "GPL-2.0-or-later",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-08-13"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 400,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [
+        "desktop-plasma",
+        "desktop-gnome",
+        "desktop-xfce",
+        "desktop-hyprland",
+        "desktop-sway",
+        "desktop-cosmic",
+        "desktop-cinnamon",
+        "desktop-lxqt",
+        "desktop-mate",
+        "desktop-budgie",
+        "desktop-i3",
+        "desktop-openbox"
+      ],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 9
+      }
+    },
+    {
+      "id": "desktop-mate",
+      "kind": "desktop",
+      "name": {
+        "en": "MATE",
+        "zh_CN": "MATE"
+      },
+      "description": {
+        "en": "MATE - a traditional, full-featured desktop that continues the classic GNOME 2 philosophy. Familiar taskbar, menus and desktop layout with a modern, actively maintained codebase. A great middle ground between lightweight and full-featured. Requires an internet connection to install.",
+        "zh_CN": "MATE——延续经典 GNOME 2 理念的传统全功能桌面。熟悉的任务栏、菜单与桌面布局，代码库现代且持续维护。介于轻量与全功能之间的理想选择。需要联网安装。"
+      },
+      "primaryCategory": "desktop-environments",
+      "tags": [
+        "desktop",
+        "mate",
+        "gtk",
+        "classic"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "mate",
+          "mate-extra",
+          "mate-terminal",
+          "caja",
+          "lightdm",
+          "lightdm-gtk-greeter"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "GPL-2.0-or-later",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-08-13"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 900,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [
+        "desktop-plasma",
+        "desktop-gnome",
+        "desktop-xfce",
+        "desktop-hyprland",
+        "desktop-sway",
+        "desktop-cosmic",
+        "desktop-cinnamon",
+        "desktop-lxqt",
+        "desktop-lxde",
+        "desktop-budgie",
+        "desktop-i3",
+        "desktop-openbox"
+      ],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 10
+      }
+    },
+    {
+      "id": "desktop-budgie",
+      "kind": "desktop",
+      "name": {
+        "en": "Budgie",
+        "zh_CN": "Budgie"
+      },
+      "description": {
+        "en": "Budgie - a modern, elegant desktop built on GTK 3 with a clean, polished look. Features the characteristic Budgie Panel, a Raven notification center and a focus on simplicity and aesthetics. Made popular by Solus. Requires an internet connection to install.",
+        "zh_CN": "Budgie——基于 GTK3 打造的现代优雅桌面，外观干净精致。拥有标志性的 Budgie 面板、Raven 通知中心，主打简约与美观，因 Solus 发行版而广受欢迎。需要联网安装。"
+      },
+      "primaryCategory": "desktop-environments",
+      "tags": [
+        "desktop",
+        "budgie",
+        "gtk",
+        "modern"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "budgie",
+          "budgie-desktop",
+          "budgie-control-center",
+          "lightdm",
+          "lightdm-gtk-greeter",
+          "gnome-settings-daemon"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "GPL-2.0-or-later",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-08-13"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 800,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [
+        "desktop-plasma",
+        "desktop-gnome",
+        "desktop-xfce",
+        "desktop-hyprland",
+        "desktop-sway",
+        "desktop-cosmic",
+        "desktop-cinnamon",
+        "desktop-lxqt",
+        "desktop-lxde",
+        "desktop-mate",
+        "desktop-i3",
+        "desktop-openbox"
+      ],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 11
+      }
+    },
+    {
+      "id": "desktop-i3",
+      "kind": "desktop",
+      "name": {
+        "en": "i3",
+        "zh_CN": "i3"
+      },
+      "description": {
+        "en": "i3 - a minimalist, keyboard-driven tiling window manager. Extremely fast, lightweight and highly configurable via a text file. No window decorations or desktop widgets - just your windows neatly tiled. Ideal for developers and advanced users. Runs on X11. Requires an internet connection to install.",
+        "zh_CN": "i3——极简、键盘驱动的平铺窗口管理器。运行极快、极其轻量，通过纯文本配置文件高度定制。没有窗口装饰与桌面部件，只有整齐平铺的窗口，适合开发者与进阶用户。基于 X11。需要联网安装。"
+      },
+      "primaryCategory": "desktop-environments",
+      "tags": [
+        "desktop",
+        "i3",
+        "tiling",
+        "x11",
+        "lightweight"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "i3-wm",
+          "i3status",
+          "dmenu",
+          "alacritty",
+          "feh",
+          "picom",
+          "lightdm",
+          "lightdm-gtk-greeter"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "BSD-3-Clause",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-08-13"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 300,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [
+        "desktop-plasma",
+        "desktop-gnome",
+        "desktop-xfce",
+        "desktop-hyprland",
+        "desktop-sway",
+        "desktop-cosmic",
+        "desktop-cinnamon",
+        "desktop-lxqt",
+        "desktop-lxde",
+        "desktop-mate",
+        "desktop-budgie",
+        "desktop-openbox"
+      ],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 12
+      }
+    },
+    {
+      "id": "desktop-openbox",
+      "kind": "desktop",
+      "name": {
+        "en": "Openbox",
+        "zh_CN": "Openbox"
+      },
+      "description": {
+        "en": "Openbox - a highly configurable, lightweight stacking window manager. Minimal and fast, with a simple right-click desktop menu. A superb base for building your own custom, minimal desktop. Runs on X11. Requires an internet connection to install.",
+        "zh_CN": "Openbox——高度可配置、轻量的堆叠式窗口管理器。极简快速，带简单的右键桌面菜单，是搭建个性化极简桌面的绝佳基础。基于 X11。需要联网安装。"
+      },
+      "primaryCategory": "desktop-environments",
+      "tags": [
+        "desktop",
+        "openbox",
+        "x11",
+        "lightweight"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "openbox",
+          "obconf",
+          "dmenu",
+          "alacritty",
+          "tint2",
+          "feh",
+          "lxappearance",
+          "lightdm",
+          "lightdm-gtk-greeter"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "GPL-2.0-or-later",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-08-13"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 250,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [
+        "desktop-plasma",
+        "desktop-gnome",
+        "desktop-xfce",
+        "desktop-hyprland",
+        "desktop-sway",
+        "desktop-cosmic",
+        "desktop-cinnamon",
+        "desktop-lxqt",
+        "desktop-lxde",
+        "desktop-mate",
+        "desktop-budgie",
+        "desktop-i3"
+      ],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 13
       }
     }
   ],
@@ -3141,6 +3639,64 @@
       }
     },
     {
+      "id": "zed",
+      "kind": "application",
+      "name": {
+        "en": "Zed",
+        "zh_CN": "Zed"
+      },
+      "description": {
+        "en": "A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter, written in Rust with GPU-accelerated rendering.",
+        "zh_CN": "由 Atom 与 Tree-sitter 原班人马打造的高性能多人协作代码编辑器，基于 Rust 编写并采用 GPU 加速渲染。"
+      },
+      "primaryCategory": "app-development",
+      "tags": [
+        "editor",
+        "ide",
+        "rust"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "zed"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "AGPL-3.0-or-later",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-08-13"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 337,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 21
+      }
+    },
+    {
       "id": "geany",
       "kind": "application",
       "name": {
@@ -4528,7 +5084,7 @@
         "en": "System snapshot management utility.",
         "zh_CN": "系统快照管理工具。"
       },
-      "primaryCategory": "app-system",
+      "primaryCategory": "cap-essential-online",
       "tags": [
         "backup",
         "recovery"
@@ -4560,8 +5116,8 @@
         "architectures": [
           "x86_64"
         ],
-        "networkRequired": false,
-        "offlinePolicy": "included",
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
         "channel": "default"
       },
       "sizeMiB": 20,
@@ -6562,11 +7118,12 @@
         "en": "Resource monitor and task manager with CPU/GPU power (RAPL) display.",
         "zh_CN": "终端资源监视器/任务管理器，支持 CPU/GPU 功耗显示（RAPL）。"
       },
-      "primaryCategory": "app-system",
+      "primaryCategory": "cap-essential-online",
       "tags": [
         "monitor",
         "cli",
-        "system"
+        "system",
+        "essential"
       ],
       "selection": {
         "mode": "multi"
@@ -6727,69 +7284,6 @@
         "recommended": true,
         "defaultSelected": false,
         "order": 2
-      },
-      "criticalSystemCapability": false
-    },
-    {
-      "id": "component-python-pypi-tools",
-      "kind": "component",
-      "name": {
-        "en": "PyPI user tools",
-        "zh_CN": "PyPI 用户工具"
-      },
-      "description": {
-        "en": "User-scoped Python command-line tools installed through pip after explicit opt-in.",
-        "zh_CN": "明确 opt-in 后通过 pip 安装的用户级 Python 命令行工具。"
-      },
-      "primaryCategory": "cap-runtime",
-      "tags": [
-        "python",
-        "pip",
-        "third-party"
-      ],
-      "selection": {
-        "mode": "multi"
-      },
-      "provider": "pip",
-      "artifact": {
-        "type": "package",
-        "ids": [
-          "ipython",
-          "httpie"
-        ]
-      },
-      "scope": "user",
-      "source": "pypi",
-      "license": {
-        "classification": "mixed",
-        "spdx": "LicenseRef-PyPI-User-Tools-Mixed-Open-Source",
-        "redistributable": false,
-        "requiresAcceptance": false
-      },
-      "review": {
-        "status": "reviewed",
-        "date": "2026-08-05",
-        "note": "Source reviewed; release approved."
-      },
-      "availability": {
-        "status": "available",
-        "architectures": [
-          "x86_64"
-        ],
-        "networkRequired": true,
-        "offlinePolicy": "online-only",
-        "channel": "default"
-      },
-      "sizeMiB": 80,
-      "requires": [
-        "component-python-venv"
-      ],
-      "recommends": [],
-      "conflicts": [],
-      "presentation": {
-        "recommended": false,
-        "defaultSelected": false,
-        "order": 3
       },
       "criticalSystemCapability": false
     },
@@ -10302,7 +10796,8 @@
           "kate",
           "kdiff3",
           "meld",
-          "sqlitebrowser"
+          "sqlitebrowser",
+          "zed"
         ]
       },
       "criticalSystemCapability": false,
@@ -10455,15 +10950,48 @@
           "gparted",
           "htop",
           "kdeconnect",
-          "partitionmanager",
-          "timeshift",
-          "application-btop"
+          "partitionmanager"
         ]
       },
       "criticalSystemCapability": false,
       "presentation": {
         "defaultSelected": false,
         "order": 140
+      }
+    },
+    {
+      "id": "cap-essential-online",
+      "kind": "bundle",
+      "surface": "applications",
+      "hidden": true,
+      "name": {
+        "en": "Essential online components",
+        "zh_CN": "内置必需联网组件"
+      },
+      "description": {
+        "en": "Hidden category-root preset for built-in components that must be installed online.",
+        "zh_CN": "内置必需联网组件的隐藏分类根预设。"
+      },
+      "primaryCategory": "cap-essential-online",
+      "tags": [
+        "category-root",
+        "essential"
+      ],
+      "selection": {
+        "mode": "preset"
+      },
+      "children": {
+        "required": [
+          "timeshift",
+          "application-btop"
+        ],
+        "recommended": [],
+        "optional": []
+      },
+      "criticalSystemCapability": true,
+      "presentation": {
+        "defaultSelected": true,
+        "order": 2
       }
     },
     {
@@ -10493,7 +11021,6 @@
           "bundle-python-runtime",
           "component-python",
           "component-python-venv",
-          "component-python-pypi-tools",
           "component-uv",
           "component-miniforge",
           "component-nodejs",
@@ -10980,7 +11507,6 @@
           "component-python-venv"
         ],
         "optional": [
-          "component-python-pypi-tools",
           "component-uv"
         ]
       },

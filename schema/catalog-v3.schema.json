@@ -222,6 +222,9 @@
             "components"
           ]
         },
+        "hidden": {
+          "type": "boolean"
+        },
         "name": {
           "$ref": "#/$defs/localized"
         },
@@ -573,6 +576,9 @@
                 "applications",
                 "components"
               ]
+            },
+            "hidden": {
+              "type": "boolean"
             },
             "children": {
               "type": "object",
