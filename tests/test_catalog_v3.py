@@ -212,9 +212,12 @@ class CatalogV3Tests(unittest.TestCase):
         ]
         # 2026-08-13 修订: timeshift/btop 移入离线基线必装(target-packages), 从 catalog 移除,
         # 安装器软件选择页不再显示(交接文档方案 A)。
-        # 2026-08-13 追加: steam 默认勾选(游戏工具默认装载, 用户决策),
-        # 组件侧 gaming-foundations/open-gpu-runtime 同步默认。
-        self.assertEqual(["firefox", "steam"], sorted(selected))
+        # 2026-08-14 修订: steam 撤默认预装(游戏不预装, 用户显式选择后经
+        # bundle-gaming-setup 工具链+剩余一并装; welcome 提供 Gaming Manager 入口)。
+        self.assertEqual(["firefox"], sorted(selected))
+        self.assertFalse(self.nodes["steam"]["presentation"]["defaultSelected"])
+        self.assertFalse(self.nodes["component-gaming-foundations"]["presentation"]["defaultSelected"])
+        self.assertFalse(self.nodes["component-open-gpu-runtime"]["presentation"]["defaultSelected"])
         self.assertTrue(self.nodes["chromium"]["presentation"]["recommended"])
         self.assertFalse(self.nodes["chromium"]["presentation"]["defaultSelected"])
         self.assertEqual(
@@ -226,13 +229,12 @@ class CatalogV3Tests(unittest.TestCase):
         #   保留 Podman / Distrobox 默认选中(用户确认)
         # 2026-08-13 追加: docker/docker-compose 归入运行时(cap-containers)并默认选中(用户确认,
         #   容器运行时属系统能力, 与软件页划分: 运行时页默认勾选, 软件页用户可选)
+        # 2026-08-14 修订: 游戏组件撤默认预装(用户显式选择, bundle-gaming-setup 一并装载)
         self.assertEqual(
             [
                 "component-distrobox",
                 "component-docker",
                 "component-docker-compose",
-                "component-gaming-foundations",
-                "component-open-gpu-runtime",
                 "component-podman",
             ],
             sorted(

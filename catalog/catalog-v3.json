@@ -4673,7 +4673,7 @@
       "conflicts": [],
       "presentation": {
         "recommended": true,
-        "defaultSelected": true,
+        "defaultSelected": false,
         "order": 10
       }
     },
@@ -9908,7 +9908,7 @@
       "conflicts": [],
       "presentation": {
         "recommended": true,
-        "defaultSelected": true,
+        "defaultSelected": false,
         "order": 1
       },
       "criticalSystemCapability": false
@@ -9974,7 +9974,7 @@
       "conflicts": [],
       "presentation": {
         "recommended": true,
-        "defaultSelected": true,
+        "defaultSelected": false,
         "order": 2
       },
       "criticalSystemCapability": true
