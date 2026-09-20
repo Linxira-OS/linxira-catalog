@@ -1,8 +1,8 @@
 {
   "$schema": "catalog-v3.schema.json",
   "catalogVersion": 3,
-  "release": "2026.08",
-  "reviewed": "2026-08-09",
+  "release": "2026.09",
+  "reviewed": "2026-09-20",
   "sources": [
     {
       "id": "arch",
@@ -100,6 +100,7 @@
       },
       "children": [
         "desktop-plasma",
+        "desktop-cosmic",
         "desktop-server"
       ],
       "order": 1
@@ -1138,8 +1139,8 @@
         "zh_CN": "COSMIC"
       },
       "description": {
-        "en": "COSMIC - System76's modern Rust-based desktop environment with advanced features, a responsive tiling layout and a calm, configurable UI. A fresh take on the Linux desktop with excellent Wayland support. Requires an internet connection to install.",
-        "zh_CN": "COSMIC——System76 用 Rust 打造的现代化桌面环境，功能先进、支持响应式平铺布局，界面沉稳可定制，Wayland 支持出色，是 Linux 桌面的一股新势力。需要联网安装。"
+        "en": "COSMIC - System76's modern Rust-based desktop environment and Linxira's second first-class desktop, with a responsive tiling layout, a calm configurable UI and excellent Wayland support. Ships on the ISO alongside KDE Plasma, so it works offline with no additional download. Includes COSMIC Files, Terminal, Text Editor, Settings, the Store software center and the full COSMIC applet suite.",
+        "zh_CN": "COSMIC——System76 用 Rust 打造的现代化桌面环境，Linxira 第二个一等桌面，支持响应式平铺布局，界面沉稳可定制，Wayland 支持出色。与 KDE Plasma 一同随镜像附带，离线即可使用，无需额外下载。包含 COSMIC 文件管理器、终端、文本编辑器、系统设置、应用商店与完整的 COSMIC 小组件套件。"
       },
       "primaryCategory": "desktop-environments",
       "tags": [
@@ -1155,8 +1156,32 @@
       "artifact": {
         "type": "package",
         "ids": [
-          "cosmic",
-          "cosmic-session"
+          "cosmic-app-library",
+          "cosmic-applets",
+          "cosmic-bg",
+          "cosmic-comp",
+          "cosmic-files",
+          "cosmic-icon-theme",
+          "cosmic-idle",
+          "cosmic-launcher",
+          "cosmic-monitor",
+          "cosmic-notifications",
+          "cosmic-osd",
+          "cosmic-panel",
+          "cosmic-randr",
+          "cosmic-screenshot",
+          "cosmic-session",
+          "cosmic-settings",
+          "cosmic-settings-daemon",
+          "cosmic-sound-theme",
+          "cosmic-store",
+          "cosmic-terminal",
+          "cosmic-text-editor",
+          "cosmic-wallpapers",
+          "cosmic-workspaces",
+          "pop-icon-theme",
+          "sddm",
+          "xdg-desktop-portal-cosmic"
         ]
       },
       "scope": "system",
@@ -1169,18 +1194,18 @@
       },
       "review": {
         "status": "reviewed",
-        "date": "2026-08-09"
+        "date": "2026-09-20"
       },
       "availability": {
         "status": "available",
         "architectures": [
           "x86_64"
         ],
-        "networkRequired": true,
-        "offlinePolicy": "online-only",
+        "networkRequired": false,
+        "offlinePolicy": "included",
         "channel": "default"
       },
-      "sizeMiB": 900,
+      "sizeMiB": 1200,
       "requires": [],
       "recommends": [],
       "conflicts": [
@@ -1190,13 +1215,18 @@
         "desktop-hyprland",
         "desktop-sway",
         "desktop-cinnamon",
+        "desktop-lxqt",
+        "desktop-lxde",
+        "desktop-mate",
+        "desktop-budgie",
+        "desktop-i3",
+        "desktop-openbox",
         "desktop-server"
       ],
       "presentation": {
-        "recommended": false,
+        "recommended": true,
         "defaultSelected": false,
-        "order": 6,
-        "installerVisible": false
+        "order": 2
       }
     },
     {
@@ -10363,6 +10393,7 @@
         "recommended": [],
         "optional": [
           "desktop-plasma",
+          "desktop-cosmic",
           "desktop-server"
         ]
       },

@@ -374,9 +374,11 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertEqual(category["selection"], {"mode": "exclusive"})
         # 2026-08-13 产品决策: 桌面选择面收窄为 KDE Plasma / 服务器(无桌面);
         # 其余桌面(gnome/xfce/...)保留元数据(installerVisible:false), 暂不进入选择面。
+        # 2026-09-20 产品决策: COSMIC 升级为第二个一等桌面, 与 Plasma 同级随镜像附带;
+        # KDE Plasma 仍为默认(defaultSelected), COSMIC 可选不默认。
         self.assertEqual(
             category["children"],
-            ["desktop-plasma", "desktop-server"],
+            ["desktop-plasma", "desktop-cosmic", "desktop-server"],
         )
         self.assertEqual(
             [d["id"] for d in self.catalog["desktops"]
@@ -408,6 +410,38 @@ class CatalogV3Tests(unittest.TestCase):
         plasma = self.nodes["desktop-plasma"]
         self.assertEqual(plasma["review"]["status"], "reviewed")
         self.assertEqual(plasma["availability"]["offlinePolicy"], "included")
+
+        # 2026-09-20: COSMIC 第二个一等桌面 —— 离线附带、安装器可见、推荐但不默认。
+        cosmic = self.nodes["desktop-cosmic"]
+        self.assertEqual(cosmic["review"]["status"], "reviewed")
+        self.assertEqual(cosmic["availability"]["status"], "available")
+        self.assertEqual(cosmic["availability"]["channel"], "default")
+        self.assertEqual(cosmic["availability"]["offlinePolicy"], "included")
+        self.assertFalse(cosmic["availability"]["networkRequired"])
+        self.assertTrue(cosmic["presentation"]["recommended"])
+        self.assertFalse(cosmic["presentation"]["defaultSelected"])
+        self.assertNotIn("installerVisible", cosmic["presentation"])
+        self.assertEqual(
+            cosmic["artifact"]["ids"],
+            [
+                "cosmic-app-library", "cosmic-applets", "cosmic-bg",
+                "cosmic-comp", "cosmic-files", "cosmic-icon-theme",
+                "cosmic-idle", "cosmic-launcher", "cosmic-monitor",
+                "cosmic-notifications", "cosmic-osd", "cosmic-panel",
+                "cosmic-randr", "cosmic-screenshot", "cosmic-session",
+                "cosmic-settings", "cosmic-settings-daemon",
+                "cosmic-sound-theme", "cosmic-store", "cosmic-terminal",
+                "cosmic-text-editor", "cosmic-wallpapers",
+                "cosmic-workspaces", "pop-icon-theme", "sddm",
+                "xdg-desktop-portal-cosmic",
+            ],
+        )
+        for other in self.catalog["desktops"]:
+            if other["id"] == "desktop-cosmic":
+                continue
+            self.assertIn("desktop-cosmic", other["conflicts"])
+            self.assertIn(other["id"], cosmic["conflicts"])
+
         self.assertEqual(gnome["review"]["status"], "reviewed")
         self.assertEqual(gnome["availability"]["status"], "available")
         self.assertEqual(gnome["availability"]["channel"], "default")
