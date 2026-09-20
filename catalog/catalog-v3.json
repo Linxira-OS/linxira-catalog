@@ -101,7 +101,8 @@
       "children": [
         "desktop-plasma",
         "desktop-cosmic",
-        "desktop-server"
+        "desktop-server",
+        "desktop-server-minimal"
       ],
       "order": 1
     },
@@ -811,7 +812,8 @@
         "desktop-sway",
         "desktop-cosmic",
         "desktop-cinnamon",
-        "desktop-server"
+        "desktop-server",
+        "desktop-server-minimal"
       ],
       "presentation": {
         "recommended": true,
@@ -885,7 +887,8 @@
         "desktop-sway",
         "desktop-cosmic",
         "desktop-cinnamon",
-        "desktop-server"
+        "desktop-server",
+        "desktop-server-minimal"
       ],
       "presentation": {
         "recommended": false,
@@ -967,7 +970,8 @@
         "desktop-budgie",
         "desktop-i3",
         "desktop-openbox",
-        "desktop-server"
+        "desktop-server",
+        "desktop-server-minimal"
       ],
       "presentation": {
         "recommended": false,
@@ -1044,7 +1048,8 @@
         "desktop-sway",
         "desktop-cosmic",
         "desktop-cinnamon",
-        "desktop-server"
+        "desktop-server",
+        "desktop-server-minimal"
       ],
       "presentation": {
         "recommended": false,
@@ -1122,7 +1127,8 @@
         "desktop-hyprland",
         "desktop-cosmic",
         "desktop-cinnamon",
-        "desktop-server"
+        "desktop-server",
+        "desktop-server-minimal"
       ],
       "presentation": {
         "recommended": false,
@@ -1221,7 +1227,8 @@
         "desktop-budgie",
         "desktop-i3",
         "desktop-openbox",
-        "desktop-server"
+        "desktop-server",
+        "desktop-server-minimal"
       ],
       "presentation": {
         "recommended": true,
@@ -1301,7 +1308,8 @@
         "desktop-budgie",
         "desktop-i3",
         "desktop-openbox",
-        "desktop-server"
+        "desktop-server",
+        "desktop-server-minimal"
       ],
       "presentation": {
         "recommended": false,
@@ -1379,7 +1387,8 @@
         "desktop-budgie",
         "desktop-i3",
         "desktop-openbox",
-        "desktop-server"
+        "desktop-server",
+        "desktop-server-minimal"
       ],
       "presentation": {
         "recommended": false,
@@ -1457,7 +1466,8 @@
         "desktop-budgie",
         "desktop-i3",
         "desktop-openbox",
-        "desktop-server"
+        "desktop-server",
+        "desktop-server-minimal"
       ],
       "presentation": {
         "recommended": false,
@@ -1536,7 +1546,8 @@
         "desktop-budgie",
         "desktop-i3",
         "desktop-openbox",
-        "desktop-server"
+        "desktop-server",
+        "desktop-server-minimal"
       ],
       "presentation": {
         "recommended": false,
@@ -1615,7 +1626,8 @@
         "desktop-mate",
         "desktop-i3",
         "desktop-openbox",
-        "desktop-server"
+        "desktop-server",
+        "desktop-server-minimal"
       ],
       "presentation": {
         "recommended": false,
@@ -1697,7 +1709,8 @@
         "desktop-mate",
         "desktop-budgie",
         "desktop-openbox",
-        "desktop-server"
+        "desktop-server",
+        "desktop-server-minimal"
       ],
       "presentation": {
         "recommended": false,
@@ -1779,7 +1792,8 @@
         "desktop-mate",
         "desktop-budgie",
         "desktop-i3",
-        "desktop-server"
+        "desktop-server",
+        "desktop-server-minimal"
       ],
       "presentation": {
         "recommended": false,
@@ -1850,12 +1864,86 @@
         "desktop-mate",
         "desktop-budgie",
         "desktop-i3",
-        "desktop-openbox"
+        "desktop-openbox",
+        "desktop-server-minimal"
       ],
       "presentation": {
         "recommended": false,
         "defaultSelected": false,
         "order": 1
+      }
+    },
+    {
+      "id": "desktop-server-minimal",
+      "kind": "desktop",
+      "name": {
+        "en": "Server (minimal - pure Arch)",
+        "zh_CN": "服务器（最小 · 纯 Arch）"
+      },
+      "description": {
+        "en": "Pure Arch Linux minimal server: base system, dual kernels, GRUB, NetworkManager and SSH only - no Linxira tools, no desktop pipeline, no [linxira] repository. Install everything else yourself on the command line, exactly like a vanilla Arch install.",
+        "zh_CN": "\u7eaf Arch Linux \u6700\u5c0f\u670d\u52a1\u5668\uff1a\u4ec5\u57fa\u7840\u7cfb\u7edf\u3001\u53cc\u5185\u6838\u3001GRUB\u3001NetworkManager \u4e0e SSH\uff0c\u4e0d\u542b Linxira \u5de5\u5177\u94fe\u3001\u684c\u9762\u7ba1\u7ebf\u4e0e [linxira] \u4ed3\u5e93\uff0c\u5176\u4f59\u4e00\u5207\u7531\u4f60\u5728\u547d\u4ee4\u884c\u81ea\u884c\u5b89\u88c5\uff0c\u4e0e\u539f\u751f Arch \u5b89\u88c5\u5b8c\u5168\u4e00\u81f4\u3002"
+      },
+      "primaryCategory": "desktop-environments",
+      "tags": [
+        "desktop",
+        "server",
+        "headless",
+        "minimal",
+        "pure-arch"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": []
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "GPL-2.0-only",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-09-20"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": false,
+        "offlinePolicy": "included",
+        "channel": "default"
+      },
+      "sizeMiB": 800,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [
+        "desktop-plasma",
+        "desktop-gnome",
+        "desktop-xfce",
+        "desktop-hyprland",
+        "desktop-sway",
+        "desktop-cosmic",
+        "desktop-cinnamon",
+        "desktop-lxqt",
+        "desktop-lxde",
+        "desktop-mate",
+        "desktop-budgie",
+        "desktop-i3",
+        "desktop-openbox",
+        "desktop-server"
+      ],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 2
       }
     }
   ],
@@ -10394,7 +10482,8 @@
         "optional": [
           "desktop-plasma",
           "desktop-cosmic",
-          "desktop-server"
+          "desktop-server",
+          "desktop-server-minimal"
         ]
       },
       "criticalSystemCapability": true,

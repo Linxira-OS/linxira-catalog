@@ -378,7 +378,8 @@ class CatalogV3Tests(unittest.TestCase):
         # KDE Plasma 仍为默认(defaultSelected), COSMIC 可选不默认。
         self.assertEqual(
             category["children"],
-            ["desktop-plasma", "desktop-cosmic", "desktop-server"],
+            ["desktop-plasma", "desktop-cosmic", "desktop-server",
+             "desktop-server-minimal"],
         )
         self.assertEqual(
             [d["id"] for d in self.catalog["desktops"]
@@ -387,7 +388,8 @@ class CatalogV3Tests(unittest.TestCase):
              "desktop-hyprland", "desktop-sway", "desktop-cosmic",
              "desktop-cinnamon", "desktop-lxqt", "desktop-lxde",
              "desktop-mate", "desktop-budgie", "desktop-i3",
-             "desktop-openbox", "desktop-server"],
+             "desktop-openbox", "desktop-server",
+             "desktop-server-minimal"],
         )
 
         xfce = self.nodes["desktop-xfce"]
@@ -441,6 +443,17 @@ class CatalogV3Tests(unittest.TestCase):
                 continue
             self.assertIn("desktop-cosmic", other["conflicts"])
             self.assertIn(other["id"], cosmic["conflicts"])
+
+        # 2026-09-20: 服务器最小安装(纯 Arch) —— 空包集/included/可见/与全部桌面互斥
+        minimal = self.nodes["desktop-server-minimal"]
+        self.assertEqual(minimal["availability"]["offlinePolicy"], "included")
+        self.assertEqual(minimal["artifact"]["ids"], [])
+        self.assertNotIn("installerVisible", minimal["presentation"])
+        for other in self.catalog["desktops"]:
+            if other["id"] == "desktop-server-minimal":
+                continue
+            self.assertIn("desktop-server-minimal", other["conflicts"])
+            self.assertIn(other["id"], minimal["conflicts"])
 
         self.assertEqual(gnome["review"]["status"], "reviewed")
         self.assertEqual(gnome["availability"]["status"], "available")
