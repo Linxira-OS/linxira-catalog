@@ -435,7 +435,7 @@ class CatalogV3Tests(unittest.TestCase):
                 "cosmic-sound-theme", "cosmic-store", "cosmic-terminal",
                 "cosmic-text-editor", "cosmic-wallpapers",
                 "cosmic-workspaces", "pop-icon-theme", "sddm",
-                "xdg-desktop-portal-cosmic",
+                "xdg-desktop-portal-cosmic", "vulkan-swrast",
             ],
         )
         for other in self.catalog["desktops"]:
