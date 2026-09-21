@@ -1187,7 +1187,8 @@
           "cosmic-workspaces",
           "pop-icon-theme",
           "sddm",
-          "xdg-desktop-portal-cosmic"
+          "xdg-desktop-portal-cosmic",
+          "vulkan-swrast"
         ]
       },
       "scope": "system",
