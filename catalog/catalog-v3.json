@@ -1883,7 +1883,7 @@
       },
       "description": {
         "en": "Pure Arch Linux minimal server: base system, dual kernels, GRUB, NetworkManager and SSH only - no Linxira tools, no desktop pipeline, no [linxira] repository. Install everything else yourself on the command line, exactly like a vanilla Arch install.",
-        "zh_CN": "\u7eaf Arch Linux \u6700\u5c0f\u670d\u52a1\u5668\uff1a\u4ec5\u57fa\u7840\u7cfb\u7edf\u3001\u53cc\u5185\u6838\u3001GRUB\u3001NetworkManager \u4e0e SSH\uff0c\u4e0d\u542b Linxira \u5de5\u5177\u94fe\u3001\u684c\u9762\u7ba1\u7ebf\u4e0e [linxira] \u4ed3\u5e93\uff0c\u5176\u4f59\u4e00\u5207\u7531\u4f60\u5728\u547d\u4ee4\u884c\u81ea\u884c\u5b89\u88c5\uff0c\u4e0e\u539f\u751f Arch \u5b89\u88c5\u5b8c\u5168\u4e00\u81f4\u3002"
+        "zh_CN": "纯 Arch Linux 最小服务器：仅基础系统、双内核、GRUB、NetworkManager 与 SSH，不含 Linxira 工具链、桌面管线与 [linxira] 仓库，其余一切由你在命令行自行安装，与原生 Arch 安装完全一致。"
       },
       "primaryCategory": "desktop-environments",
       "tags": [
@@ -7115,6 +7115,65 @@
         "recommended": false,
         "defaultSelected": false,
         "order": 18
+      }
+    },
+    {
+      "id": "linxira-bio-sdk",
+      "kind": "application",
+      "name": {
+        "en": "Linxira Bio SDK",
+        "zh_CN": "Linxira 生物计算套件"
+      },
+      "description": {
+        "en": "Local-first bioinformatics toolkit: Rust engine with CLI and UI, data never leaves the machine.",
+        "zh_CN": "本地优先生信计算套件：Rust 引擎 + CLI/UI，数据不出本机；含转录组定量与可复现基准管线。"
+      },
+      "primaryCategory": "app-scientific",
+      "tags": [
+        "bio",
+        "science",
+        "linxira"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "builtin",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "linxira-bio-sdk"
+        ]
+      },
+      "scope": "system",
+      "source": "linxira-operations",
+      "license": {
+        "classification": "open-source",
+        "spdx": "AGPL-3.0-or-later",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-09-22"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 350,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 100,
+        "installerVisible": false
       }
     }
   ],
