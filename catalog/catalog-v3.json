@@ -485,7 +485,8 @@
         "component-go",
         "component-java",
         "component-julia",
-        "component-r"
+        "component-r",
+        "component-nix"
       ],
       "order": 200
     },
@@ -7469,7 +7470,7 @@
       "conflicts": [],
       "presentation": {
         "recommended": true,
-        "defaultSelected": false,
+        "defaultSelected": true,
         "order": 5
       },
       "criticalSystemCapability": false
@@ -7759,6 +7760,64 @@
         "recommended": true,
         "defaultSelected": false,
         "order": 10
+      },
+      "criticalSystemCapability": false
+    },
+    {
+      "id": "component-nix",
+      "kind": "component",
+      "name": {
+        "en": "Nix package manager",
+        "zh_CN": "Nix 包管理器"
+      },
+      "description": {
+        "en": "Declarative development environments via the Nix store: side-by-side toolchain versions and per-project isolation.",
+        "zh_CN": "基于 Nix store 的声明式开发环境：工具链多版本并存与项目级隔离。"
+      },
+      "primaryCategory": "cap-runtime",
+      "tags": [
+        "nix",
+        "devtools"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "nix"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "LGPL-2.1-or-later",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-03"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 120,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 11
       },
       "criticalSystemCapability": false
     },
@@ -11106,7 +11165,8 @@
           "component-go",
           "component-java",
           "component-julia",
-          "component-r"
+          "component-r",
+          "component-nix"
         ]
       },
       "criticalSystemCapability": false,
@@ -11542,7 +11602,8 @@
           "bundle-python-runtime",
           "component-nodejs",
           "component-rust",
-          "component-go"
+          "component-go",
+          "component-nix"
         ],
         "optional": [
           "component-miniforge",

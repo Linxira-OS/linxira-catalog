@@ -235,6 +235,7 @@ class CatalogV3Tests(unittest.TestCase):
                 "component-distrobox",
                 "component-docker",
                 "component-docker-compose",
+                "component-nodejs",
                 "component-podman",
             ],
             sorted(
