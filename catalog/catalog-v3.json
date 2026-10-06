@@ -10601,8 +10601,8 @@
         "zh_CN": "终端富媒体工具"
       },
       "description": {
-        "en": "chafa/timg/viu inline images (Sixel auto-detected, Unicode fallback) plus w3m text browsing.",
-        "zh_CN": "chafa/timg/viu 终端内看图（自动探测 Sixel，无协议时字符画兜底）+ w3m 文本浏览。"
+        "en": "chafa/catimg/viu inline images (Sixel auto-detected, Unicode fallback) plus w3m text browsing.",
+        "zh_CN": "chafa/catimg/viu 终端内看图（自动探测 Sixel，无协议时字符画兜底）+ w3m 文本浏览。"
       },
       "primaryCategory": "cap-terminal",
       "tags": [
@@ -10618,7 +10618,7 @@
         "type": "package",
         "ids": [
           "chafa",
-          "timg",
+          "catimg",
           "viu",
           "w3m"
         ]
