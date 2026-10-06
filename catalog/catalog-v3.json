@@ -734,6 +734,26 @@
         "component-clash-verge"
       ],
       "order": 300
+    },
+    {
+      "id": "cap-terminal",
+      "kind": "category",
+      "surface": "components",
+      "name": {
+        "en": "Terminal Tools",
+        "zh_CN": "终端工具"
+      },
+      "description": {
+        "en": "Rich-media and productivity tools for the terminal: inline images, text browsing, terminal plots.",
+        "zh_CN": "终端富媒体与效率工具：终端内图像、文本浏览、终端绘图。"
+      },
+      "selection": {
+        "mode": "multi"
+      },
+      "children": [
+        "component-terminal-media"
+      ],
+      "order": 260
     }
   ],
   "desktops": [
@@ -10572,6 +10592,69 @@
         "order": 7
       },
       "criticalSystemCapability": false
+    },
+    {
+      "id": "component-terminal-media",
+      "kind": "component",
+      "name": {
+        "en": "Terminal media tools",
+        "zh_CN": "终端富媒体工具"
+      },
+      "description": {
+        "en": "chafa/timg/viu inline images (Sixel auto-detected, Unicode fallback) plus w3m text browsing.",
+        "zh_CN": "chafa/timg/viu 终端内看图（自动探测 Sixel，无协议时字符画兜底）+ w3m 文本浏览。"
+      },
+      "primaryCategory": "cap-terminal",
+      "tags": [
+        "terminal",
+        "media",
+        "images"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "chafa",
+          "timg",
+          "viu",
+          "w3m"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "MIT",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-07",
+        "note": "四件均为官方仓库常规工具"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": false,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 12,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 12
+      },
+      "criticalSystemCapability": false
     }
   ],
   "bundles": [
@@ -12074,6 +12157,38 @@
       "presentation": {
         "defaultSelected": false,
         "order": 1
+      }
+    },
+    {
+      "id": "cap-terminal",
+      "kind": "bundle",
+      "surface": "components",
+      "name": {
+        "en": "Terminal Tools",
+        "zh_CN": "终端工具"
+      },
+      "description": {
+        "en": "Rich-media and productivity tools for the terminal.",
+        "zh_CN": "终端富媒体与效率工具。"
+      },
+      "primaryCategory": "cap-terminal",
+      "children": {
+        "required": [],
+        "recommended": [],
+        "optional": [
+          "component-terminal-media"
+        ]
+      },
+      "tags": [
+        "category-root"
+      ],
+      "selection": {
+        "mode": "preset"
+      },
+      "criticalSystemCapability": false,
+      "presentation": {
+        "defaultSelected": false,
+        "order": 260
       }
     }
   ],
