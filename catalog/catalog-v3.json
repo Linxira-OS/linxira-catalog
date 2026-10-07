@@ -512,7 +512,8 @@
         "component-cmake-ninja",
         "component-clang",
         "component-debuggers",
-        "component-doc-tools"
+        "component-doc-tools",
+        "component-mysql"
       ],
       "order": 210
     },
@@ -8190,6 +8191,66 @@
       "criticalSystemCapability": false
     },
     {
+      "id": "component-mysql",
+      "kind": "component",
+      "name": {
+        "en": "MySQL (MariaDB server)",
+        "zh_CN": "MySQL 数据库（MariaDB 服务端）"
+      },
+      "description": {
+        "en": "MySQL-compatible relational database: MariaDB server plus the mysql client, for local development stacks.",
+        "zh_CN": "MySQL 兼容关系数据库：MariaDB 服务端与 mysql 客户端，面向本地开发环境。"
+      },
+      "primaryCategory": "cap-development",
+      "tags": [
+        "mysql",
+        "database",
+        "devtools"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "mariadb",
+          "mariadb-clients"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "GPL-2.0-only AND LGPL-2.1-or-later",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-08"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 100,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 7
+      },
+      "criticalSystemCapability": false
+    },
+    {
       "id": "component-jupyterlab",
       "kind": "component",
       "name": {
@@ -11287,7 +11348,8 @@
           "component-cmake-ninja",
           "component-clang",
           "component-debuggers",
-          "component-doc-tools"
+          "component-doc-tools",
+          "component-mysql"
         ]
       },
       "criticalSystemCapability": false,
