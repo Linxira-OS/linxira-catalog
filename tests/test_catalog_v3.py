@@ -464,6 +464,20 @@ class CatalogV3Tests(unittest.TestCase):
         self.assertEqual(root["surface"], "desktops")
         self.assertEqual(root["children"]["optional"], category["children"])
 
+    def test_dev_database_and_forge_components_are_reviewed(self):
+        expected = {
+            "component-mysql": {"mariadb", "mariadb-clients"},
+            "component-postgresql": {"postgresql", "postgresql-libs"},
+            "component-gitea": {"gitea", "tea"},
+            "component-github-cli": {"github-cli"},
+        }
+        for component_id, packages in expected.items():
+            component = self.nodes[component_id]
+            self.assertEqual("cap-development", component["primaryCategory"], component_id)
+            self.assertEqual("arch", component["source"], component_id)
+            self.assertEqual("reviewed", component["review"]["status"], component_id)
+            self.assertEqual(packages, set(component["artifact"]["ids"]), component_id)
+
 
 if __name__ == "__main__":
     unittest.main()

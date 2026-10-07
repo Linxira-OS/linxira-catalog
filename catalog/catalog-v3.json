@@ -513,7 +513,10 @@
         "component-clang",
         "component-debuggers",
         "component-doc-tools",
-        "component-mysql"
+        "component-gitea",
+        "component-github-cli",
+        "component-mysql",
+        "component-postgresql"
       ],
       "order": 210
     },
@@ -8222,7 +8225,7 @@
       "source": "arch",
       "license": {
         "classification": "open-source",
-        "spdx": "GPL-2.0-only AND LGPL-2.1-or-later",
+        "spdx": "GPL-2.0-only",
         "redistributable": true,
         "requiresAcceptance": false
       },
@@ -8247,6 +8250,185 @@
         "recommended": false,
         "defaultSelected": false,
         "order": 7
+      },
+      "criticalSystemCapability": false
+    },
+    {
+      "id": "component-postgresql",
+      "kind": "component",
+      "name": {
+        "en": "PostgreSQL",
+        "zh_CN": "PostgreSQL 数据库"
+      },
+      "description": {
+        "en": "PostgreSQL relational database: server and psql client for local development stacks.",
+        "zh_CN": "PostgreSQL 关系数据库：服务端与 psql 客户端，面向本地开发环境。"
+      },
+      "primaryCategory": "cap-development",
+      "tags": [
+        "postgresql",
+        "database",
+        "devtools"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "postgresql",
+          "postgresql-libs"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "PostgreSQL",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-08"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 120,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 8
+      },
+      "criticalSystemCapability": false
+    },
+    {
+      "id": "component-gitea",
+      "kind": "component",
+      "name": {
+        "en": "Gitea + tea CLI",
+        "zh_CN": "Gitea 代码托管（含 tea CLI）"
+      },
+      "description": {
+        "en": "Self-hosted Git forge: Gitea server with the tea command-line client.",
+        "zh_CN": "自托管 Git 代码托管：Gitea 服务端 + tea 命令行客户端。"
+      },
+      "primaryCategory": "cap-development",
+      "tags": [
+        "gitea",
+        "tea",
+        "devtools"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "gitea",
+          "tea"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "MIT",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-08"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 180,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 9
+      },
+      "criticalSystemCapability": false
+    },
+    {
+      "id": "component-github-cli",
+      "kind": "component",
+      "name": {
+        "en": "GitHub CLI (gh)",
+        "zh_CN": "GitHub CLI（gh）"
+      },
+      "description": {
+        "en": "Official GitHub CLI (gh): manage issues, pull requests and releases from the terminal.",
+        "zh_CN": "GitHub 官方命令行（gh）：在终端管理 issue、PR 与 Release。"
+      },
+      "primaryCategory": "cap-development",
+      "tags": [
+        "github",
+        "git",
+        "devtools"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "github-cli"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "MIT",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-08"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 70,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 10
       },
       "criticalSystemCapability": false
     },
@@ -11349,7 +11531,10 @@
           "component-clang",
           "component-debuggers",
           "component-doc-tools",
-          "component-mysql"
+          "component-gitea",
+          "component-github-cli",
+          "component-mysql",
+          "component-postgresql"
         ]
       },
       "criticalSystemCapability": false,
