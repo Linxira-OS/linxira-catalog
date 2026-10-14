@@ -18,6 +18,7 @@ catalog/catalog-v2.json        当前已评审目录(v2 兼容输入)
 catalog/catalog-v3.json        application/component/bundle 图
 schema/catalog-v2.schema.json  v2 契约
 schema/catalog-v3.schema.json  严格 v3 契约
+scripts/add-craftsuite-apps.py CraftSuite/GenOffice 目录脚本(2026-10-14, AUR 源)
 scripts/add-desktops.py        目录脚本
 scripts/sync-offline-policy.py 离线策略同步脚本
 release_locks.py               发布锁定辅助
@@ -38,7 +39,7 @@ CI(`.github/workflows/ci.yml`)另跑:`PYTHONPATH=src python -m unittest discover
 
 ## 版本与发布
 
-- 版本唯一来源是根目录 `VERSION`(当前 3.2.8)。
+- 版本唯一来源是根目录 `VERSION`(当前 3.3.0)。
 - 提交 `VERSION` 变更即触发 `.github/workflows/release.yml` 建 `v<VERSION>` Release,再由 `packages/auto-bump.yml` 走全自动发布链。**禁止手工 bump 或手工改 PKGBUILD**。
 
 ## 禁区

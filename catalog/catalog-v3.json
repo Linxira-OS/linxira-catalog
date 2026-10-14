@@ -173,7 +173,11 @@
         "libreoffice",
         "libreoffice-still",
         "onlyoffice",
-        "wps-office"
+        "wps-office",
+        "genoffice",
+        "wordcraft",
+        "gridcraft",
+        "deckcraft"
       ],
       "order": 30
     },
@@ -198,7 +202,8 @@
         "foliate",
         "ghostwriter",
         "pandoc",
-        "zathura"
+        "zathura",
+        "pdfcraft"
       ],
       "order": 40
     },
@@ -250,7 +255,13 @@
         "krita",
         "nomacs",
         "scribus",
-        "shotwell"
+        "shotwell",
+        "photocraft",
+        "lightcraft",
+        "vectorcraft",
+        "designcraft",
+        "figcraft",
+        "cadcraft"
       ],
       "order": 60
     },
@@ -273,7 +284,10 @@
         "audacity",
         "handbrake",
         "kdenlive",
-        "obs-studio"
+        "obs-studio",
+        "filmcraft",
+        "effectcraft",
+        "soundcraft"
       ],
       "order": 70
     },
@@ -2365,7 +2379,7 @@
       "recommends": [],
       "conflicts": [],
       "presentation": {
-        "recommended": true,
+        "recommended": false,
         "defaultSelected": false,
         "order": 10
       }
@@ -7200,6 +7214,832 @@
         "order": 100,
         "installerVisible": false
       }
+    },
+    {
+      "id": "photocraft",
+      "kind": "application",
+      "name": {
+        "en": "PhotoCraft",
+        "zh_CN": "图像编辑（Photoshop 类）"
+      },
+      "description": {
+        "en": "Open-source raster image editor in pure Rust: layers, masks, adjustment layers, type and brushes; opens and saves layered PSD/PSB.",
+        "zh_CN": "纯 Rust 开源位图编辑器（Photoshop 类）：图层、蒙版、调整图层、文字与画笔；可读写分层 PSD/PSB。"
+      },
+      "primaryCategory": "app-graphics",
+      "tags": [
+        "graphics",
+        "photo",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "aur",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "photocraft-bin"
+        ]
+      },
+      "scope": "system",
+      "source": "aur",
+      "license": {
+        "classification": "open-source",
+        "spdx": "MIT OR Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-14",
+        "note": "AUR photocraft-bin(上游 2026-10 活跃, Apache-2.0); sizeMiB 取自上游 .deb 的 Installed-Size(2026-10-14 实测)。"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 150,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 80
+      }
+    },
+    {
+      "id": "lightcraft",
+      "kind": "application",
+      "name": {
+        "en": "LightCraft",
+        "zh_CN": "无损修图（Lightroom 类）"
+      },
+      "description": {
+        "en": "Non-destructive photo editor in pure Rust: culling, RAW development and batch export.",
+        "zh_CN": "纯 Rust 无损修图（Lightroom 类）：挑图、RAW 显影与批量导出。"
+      },
+      "primaryCategory": "app-graphics",
+      "tags": [
+        "graphics",
+        "photo",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "aur",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "lightcraft-bin"
+        ]
+      },
+      "scope": "system",
+      "source": "aur",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-14",
+        "note": "AUR lightcraft-bin(上游 2026-10 活跃, Apache-2.0); sizeMiB 取自上游 .deb 的 Installed-Size(2026-10-14 实测)。"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 193,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 90
+      }
+    },
+    {
+      "id": "vectorcraft",
+      "kind": "application",
+      "name": {
+        "en": "VectorCraft",
+        "zh_CN": "矢量绘图（Illustrator 类）"
+      },
+      "description": {
+        "en": "Open-source vector art tool in pure Rust: shape layers, gradient fills, dashed strokes and SVG.",
+        "zh_CN": "纯 Rust 开源矢量绘图（Illustrator 类）：形状图层、渐变填充、虚线描边与 SVG。"
+      },
+      "primaryCategory": "app-graphics",
+      "tags": [
+        "graphics",
+        "vector",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "aur",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "vectorcraft-bin"
+        ]
+      },
+      "scope": "system",
+      "source": "aur",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-14",
+        "note": "AUR vectorcraft-bin(上游 2026-10 活跃, Apache-2.0); sizeMiB 取自上游 .deb 的 Installed-Size(2026-10-14 实测)。"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 210,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 100
+      }
+    },
+    {
+      "id": "designcraft",
+      "kind": "application",
+      "name": {
+        "en": "DesignCraft",
+        "zh_CN": "排版与版面（InDesign 类）"
+      },
+      "description": {
+        "en": "Page and layout design editor in pure Rust: master pages, text frames and PDF export.",
+        "zh_CN": "纯 Rust 版面设计编辑器（InDesign 类）：主页、文本框与 PDF 导出。"
+      },
+      "primaryCategory": "app-graphics",
+      "tags": [
+        "graphics",
+        "layout",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "aur",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "designcraft-bin"
+        ]
+      },
+      "scope": "system",
+      "source": "aur",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-14",
+        "note": "AUR designcraft-bin(上游 2026-10 活跃, Apache-2.0); sizeMiB 取自上游 .deb 的 Installed-Size(2026-10-14 实测)。"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 141,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 110
+      }
+    },
+    {
+      "id": "figcraft",
+      "kind": "application",
+      "name": {
+        "en": "FigCraft",
+        "zh_CN": "界面设计与原型（Figma 类）"
+      },
+      "description": {
+        "en": "Interface design and prototyping in pure Rust: infinite canvas, components and handoff.",
+        "zh_CN": "纯 Rust 界面设计与原型（Figma 类）：无限画布、组件与交付标注。"
+      },
+      "primaryCategory": "app-graphics",
+      "tags": [
+        "graphics",
+        "ui",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "aur",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "figcraft"
+        ]
+      },
+      "scope": "system",
+      "source": "aur",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-14",
+        "note": "AUR figcraft(上游 2026-10 活跃, Apache-2.0); sizeMiB 取自上游 .deb 的 Installed-Size(2026-10-14 实测)。"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 168,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 120
+      }
+    },
+    {
+      "id": "cadcraft",
+      "kind": "application",
+      "name": {
+        "en": "CADCraft",
+        "zh_CN": "CAD 制图（AutoCAD 类）"
+      },
+      "description": {
+        "en": "Computer-aided design and drafting in pure Rust: parametric 2D/3D modeling.",
+        "zh_CN": "纯 Rust CAD 制图（AutoCAD 类）：参数化 2D/3D 建模。"
+      },
+      "primaryCategory": "app-graphics",
+      "tags": [
+        "graphics",
+        "cad",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "aur",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "cadcraft-bin"
+        ]
+      },
+      "scope": "system",
+      "source": "aur",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-14",
+        "note": "AUR cadcraft-bin(上游 2026-10 活跃, Apache-2.0); sizeMiB 取自上游 .deb 的 Installed-Size(2026-10-14 实测)。"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 114,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 130
+      }
+    },
+    {
+      "id": "filmcraft",
+      "kind": "application",
+      "name": {
+        "en": "FilmCraft",
+        "zh_CN": "视频剪辑（Premiere 类）"
+      },
+      "description": {
+        "en": "Open-source non-linear video editor in pure Rust: timeline, multicam, color and audio, with delivery exports.",
+        "zh_CN": "纯 Rust 开源非线性剪辑（Premiere 类）：时间线、多机位、调色与音频，含交付导出。"
+      },
+      "primaryCategory": "app-creation",
+      "tags": [
+        "video",
+        "editing",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "aur",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "filmcraft-bin"
+        ]
+      },
+      "scope": "system",
+      "source": "aur",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-14",
+        "note": "AUR filmcraft-bin(上游 2026-10 活跃, Apache-2.0); sizeMiB 取自上游 .deb 的 Installed-Size(2026-10-14 实测)。"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 137,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 50
+      }
+    },
+    {
+      "id": "effectcraft",
+      "kind": "application",
+      "name": {
+        "en": "EffectCraft",
+        "zh_CN": "视觉特效（After Effects 类）"
+      },
+      "description": {
+        "en": "Motion graphics and compositing in pure Rust: keyframes, tracking, masks and a render queue.",
+        "zh_CN": "纯 Rust 动态图形与合成（After Effects 类）：关键帧、跟踪、蒙版与渲染队列。"
+      },
+      "primaryCategory": "app-creation",
+      "tags": [
+        "video",
+        "vfx",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "aur",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "effectcraft-bin"
+        ]
+      },
+      "scope": "system",
+      "source": "aur",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-14",
+        "note": "AUR effectcraft-bin(上游 2026-10 活跃, Apache-2.0); sizeMiB 取自上游 .deb 的 Installed-Size(2026-10-14 实测)。"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 146,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 60
+      }
+    },
+    {
+      "id": "soundcraft",
+      "kind": "application",
+      "name": {
+        "en": "SoundCraft",
+        "zh_CN": "音频工作站（Pro Tools 类）"
+      },
+      "description": {
+        "en": "Open-source digital audio workstation in pure Rust: multitrack recording, editing and mixing.",
+        "zh_CN": "纯 Rust 开源数字音频工作站（Pro Tools 类）：多轨录制、编辑与混音。"
+      },
+      "primaryCategory": "app-creation",
+      "tags": [
+        "audio",
+        "daw",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "aur",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "soundcraft-bin"
+        ]
+      },
+      "scope": "system",
+      "source": "aur",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-14",
+        "note": "AUR soundcraft-bin(上游 2026-10 活跃, Apache-2.0); sizeMiB 取自上游 .deb 的 Installed-Size(2026-10-14 实测)。"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 37,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 70
+      }
+    },
+    {
+      "id": "genoffice",
+      "kind": "application",
+      "name": {
+        "en": "GenOffice",
+        "zh_CN": "AI 办公套件（Office 替代）"
+      },
+      "description": {
+        "en": "AI-native office suite: Docs, Sheets, Slides, PDF, HTML and Markdown editors with a built-in AI panel, plus a `genoffice` CLI and agent skill; bring your own API key.",
+        "zh_CN": "AI 原生办公套件：文档/表格/幻灯片/PDF/HTML/Markdown 六个编辑器 + 内置 AI 面板，另带 `genoffice` CLI 与 agent 技能；自带 API Key。"
+      },
+      "primaryCategory": "app-office",
+      "tags": [
+        "office",
+        "ai",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "aur",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "genoffice-bin"
+        ]
+      },
+      "scope": "system",
+      "source": "aur",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-14",
+        "note": "AUR genoffice-bin(2026-10 活跃)。上游主仓 Apache-2.0, 但 ee/ 目录另授 GenOffice Enterprise License(禁生产使用, 当前为空) —— **每版发布前需复核 ee/ 是否含代码**。sizeMiB 取自上游 .deb 的 Installed-Size。"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 545,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 50
+      }
+    },
+    {
+      "id": "wordcraft",
+      "kind": "application",
+      "name": {
+        "en": "WordCraft",
+        "zh_CN": "文字处理（Word 类）"
+      },
+      "description": {
+        "en": "Clean-room reimplementation of Microsoft Word in pure Rust: opens and saves .docx with styles, tables and tracked changes.",
+        "zh_CN": "纯 Rust 净室重写（Word 类）：读写 .docx，含样式、表格与修订。"
+      },
+      "primaryCategory": "app-office",
+      "tags": [
+        "office",
+        "document",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "aur",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "wordcraft-bin"
+        ]
+      },
+      "scope": "system",
+      "source": "aur",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-14",
+        "note": "AUR wordcraft-bin(上游 2026-10 活跃, Apache-2.0); sizeMiB 取自上游 .deb 的 Installed-Size(2026-10-14 实测)。"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 169,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 60
+      }
+    },
+    {
+      "id": "gridcraft",
+      "kind": "application",
+      "name": {
+        "en": "GridCraft",
+        "zh_CN": "电子表格（Excel 类）"
+      },
+      "description": {
+        "en": "Clean-room spreadsheet in pure Rust: opens and saves .xlsx and CSV/TSV with formulas and charts.",
+        "zh_CN": "纯 Rust 净室电子表格（Excel 类）：读写 .xlsx 与 CSV/TSV，含公式与图表。"
+      },
+      "primaryCategory": "app-office",
+      "tags": [
+        "office",
+        "spreadsheet",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "aur",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "gridcraft-bin"
+        ]
+      },
+      "scope": "system",
+      "source": "aur",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-14",
+        "note": "AUR gridcraft-bin(上游 2026-10 活跃, Apache-2.0); sizeMiB 取自上游 .deb 的 Installed-Size(2026-10-14 实测)。"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 45,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 70
+      }
+    },
+    {
+      "id": "deckcraft",
+      "kind": "application",
+      "name": {
+        "en": "DeckCraft",
+        "zh_CN": "演示文稿（PowerPoint 类）"
+      },
+      "description": {
+        "en": "Clean-room reimplementation of Microsoft PowerPoint in pure Rust: layouts, speaker notes and present mode for .pptx.",
+        "zh_CN": "纯 Rust 净室重写（PowerPoint 类）：.pptx 版式、演讲者备注与放映模式。"
+      },
+      "primaryCategory": "app-office",
+      "tags": [
+        "office",
+        "presentation",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "aur",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "deckcraft-bin"
+        ]
+      },
+      "scope": "system",
+      "source": "aur",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-14",
+        "note": "AUR deckcraft-bin(上游 2026-10 活跃, Apache-2.0); sizeMiB 取自上游 .deb 的 Installed-Size(2026-10-14 实测)。"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 145,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 80
+      }
+    },
+    {
+      "id": "pdfcraft",
+      "kind": "application",
+      "name": {
+        "en": "PDFCraft",
+        "zh_CN": "PDF 阅读与编辑（Acrobat 类）"
+      },
+      "description": {
+        "en": "Open-source PDF reader and editor in pure Rust: annotation, forms and page operations, plus a CLI converter.",
+        "zh_CN": "纯 Rust 开源 PDF 阅读与编辑（Acrobat 类）：批注、表单与页面操作，另含 CLI 转换器。"
+      },
+      "primaryCategory": "app-documents",
+      "tags": [
+        "pdf",
+        "document",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "aur",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "pdfcraft-bin"
+        ]
+      },
+      "scope": "system",
+      "source": "aur",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-14",
+        "note": "AUR pdfcraft-bin(上游 2026-10 活跃, Apache-2.0); sizeMiB 取自上游 .deb 的 Installed-Size(2026-10-14 实测)。"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 157,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 40
+      }
     }
   ],
   "components": [
@@ -11035,7 +11875,11 @@
           "libreoffice",
           "libreoffice-still",
           "onlyoffice",
-          "wps-office"
+          "wps-office",
+          "genoffice",
+          "wordcraft",
+          "gridcraft",
+          "deckcraft"
         ]
       },
       "criticalSystemCapability": false,
@@ -11072,7 +11916,8 @@
           "foliate",
           "ghostwriter",
           "pandoc",
-          "zathura"
+          "zathura",
+          "pdfcraft"
         ]
       },
       "criticalSystemCapability": false,
@@ -11148,7 +11993,13 @@
           "krita",
           "nomacs",
           "scribus",
-          "shotwell"
+          "shotwell",
+          "photocraft",
+          "lightcraft",
+          "vectorcraft",
+          "designcraft",
+          "figcraft",
+          "cadcraft"
         ]
       },
       "criticalSystemCapability": false,
@@ -11183,7 +12034,10 @@
           "audacity",
           "handbrake",
           "kdenlive",
-          "obs-studio"
+          "obs-studio",
+          "filmcraft",
+          "effectcraft",
+          "soundcraft"
         ]
       },
       "criticalSystemCapability": false,
@@ -12436,6 +13290,90 @@
       "presentation": {
         "defaultSelected": false,
         "order": 260
+      }
+    },
+    {
+      "id": "bundle-creative-suite",
+      "kind": "bundle",
+      "surface": "applications",
+      "name": {
+        "en": "Creative suite (Craft App Suite)",
+        "zh_CN": "创意套件（Craft App Suite）"
+      },
+      "description": {
+        "en": "Workflow-only preset: the Craft App suite for photo, vector, layout, video, audio and VFX work; office apps live in the office bundle.",
+        "zh_CN": "工作流专用预设：修图/矢量/排版/剪辑/音频/特效所需的 Craft App 套装；办公类见办公套件预设。"
+      },
+      "primaryCategory": "app-graphics",
+      "tags": [
+        "workflow-only",
+        "creative",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "preset"
+      },
+      "children": {
+        "required": [],
+        "recommended": [
+          "photocraft",
+          "vectorcraft",
+          "filmcraft",
+          "designcraft"
+        ],
+        "optional": [
+          "lightcraft",
+          "effectcraft",
+          "soundcraft",
+          "figcraft",
+          "cadcraft"
+        ]
+      },
+      "criticalSystemCapability": false,
+      "presentation": {
+        "defaultSelected": false,
+        "order": 2
+      }
+    },
+    {
+      "id": "bundle-office-suite",
+      "kind": "bundle",
+      "surface": "applications",
+      "name": {
+        "en": "Office suite",
+        "zh_CN": "办公套件"
+      },
+      "description": {
+        "en": "Workflow-only preset: AI office (GenOffice) plus the Craft office apps; LibreOffice/OnlyOffice stay optional.",
+        "zh_CN": "工作流专用预设：AI 办公（GenOffice）+ Craft 办公件；LibreOffice/OnlyOffice 保持可选。"
+      },
+      "primaryCategory": "app-office",
+      "tags": [
+        "workflow-only",
+        "office",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "preset"
+      },
+      "children": {
+        "required": [],
+        "recommended": [
+          "genoffice",
+          "wordcraft",
+          "gridcraft",
+          "deckcraft",
+          "pdfcraft"
+        ],
+        "optional": [
+          "libreoffice",
+          "onlyoffice"
+        ]
+      },
+      "criticalSystemCapability": false,
+      "presentation": {
+        "defaultSelected": false,
+        "order": 3
       }
     }
   ],
