@@ -39,7 +39,7 @@ CI(`.github/workflows/ci.yml`)另跑:`PYTHONPATH=src python -m unittest discover
 
 ## 版本与发布
 
-- 版本唯一来源是根目录 `VERSION`(当前 3.3.0)。
+- 版本唯一来源是根目录 `VERSION`(当前 3.4.0)。
 - 提交 `VERSION` 变更即触发 `.github/workflows/release.yml` 建 `v<VERSION>` Release,再由 `packages/auto-bump.yml` 走全自动发布链。**禁止手工 bump 或手工改 PKGBUILD**。
 
 ## 禁区

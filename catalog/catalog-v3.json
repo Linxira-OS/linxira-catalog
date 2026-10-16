@@ -177,7 +177,8 @@
         "genoffice",
         "wordcraft",
         "gridcraft",
-        "deckcraft"
+        "deckcraft",
+        "openoffice"
       ],
       "order": 30
     },
@@ -2379,7 +2380,7 @@
       "recommends": [],
       "conflicts": [],
       "presentation": {
-        "recommended": false,
+        "recommended": true,
         "defaultSelected": false,
         "order": 10
       }
@@ -8040,6 +8041,64 @@
         "defaultSelected": false,
         "order": 40
       }
+    },
+    {
+      "id": "openoffice",
+      "kind": "application",
+      "name": {
+        "en": "Apache OpenOffice",
+        "zh_CN": "Apache OpenOffice"
+      },
+      "description": {
+        "en": "Classic open-source office suite (Writer, Calc, Impress, Base, Draw, Math) shipped as the upstream binary; installs under /opt/openoffice4.",
+        "zh_CN": "经典开源办公套件（Writer/Calc/Impress/Base/Draw/Math），上游二进制分发包，安装到 /opt/openoffice4。"
+      },
+      "primaryCategory": "app-office",
+      "tags": [
+        "office",
+        "third-party"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "aur",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "openoffice-bin"
+        ]
+      },
+      "scope": "system",
+      "source": "aur",
+      "license": {
+        "classification": "open-source",
+        "spdx": "Apache-2.0",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-14",
+        "note": "AUR openoffice-bin 4.1.16-1(47 票, 2026-05 更新): 上游 Apache-2.0 官方 RPM 二进制重打包(license=Apache), 安装到 /opt/openoffice4; PKGBUILD 会删除 usr/bin/soffice 符号链接以避免与 libreoffice-common 冲突 ⇒ 与 LibreOffice 并存不冲突。sizeMiB=388 为 44 个上游 RPM 载荷实测解包体积。注意: 硬依赖 gtk2 已移出官方仓库(仅 AUR), python2 亦然 —— 手工/助手安装需先满足这套旧栈依赖。"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 388,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": true,
+        "defaultSelected": false,
+        "order": 90
+      }
     }
   ],
   "components": [
@@ -11879,7 +11938,8 @@
           "genoffice",
           "wordcraft",
           "gridcraft",
-          "deckcraft"
+          "deckcraft",
+          "openoffice"
         ]
       },
       "criticalSystemCapability": false,
@@ -13344,8 +13404,8 @@
         "zh_CN": "办公套件"
       },
       "description": {
-        "en": "Workflow-only preset: AI office (GenOffice) plus the Craft office apps; LibreOffice/OnlyOffice stay optional.",
-        "zh_CN": "工作流专用预设：AI 办公（GenOffice）+ Craft 办公件；LibreOffice/OnlyOffice 保持可选。"
+        "en": "Workflow-only preset: the office suites (GenOffice, LibreOffice, ONLYOFFICE, Apache OpenOffice) plus the Craft office apps.",
+        "zh_CN": "工作流专用预设：办公套件（GenOffice、LibreOffice、ONLYOFFICE、Apache OpenOffice）+ Craft 办公件。"
       },
       "primaryCategory": "app-office",
       "tags": [
@@ -13360,15 +13420,15 @@
         "required": [],
         "recommended": [
           "genoffice",
+          "libreoffice",
+          "onlyoffice",
+          "openoffice",
           "wordcraft",
           "gridcraft",
           "deckcraft",
           "pdfcraft"
         ],
-        "optional": [
-          "libreoffice",
-          "onlyoffice"
-        ]
+        "optional": []
       },
       "criticalSystemCapability": false,
       "presentation": {
