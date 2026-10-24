@@ -770,7 +770,10 @@
         "mode": "multi"
       },
       "children": [
-        "component-terminal-media"
+        "component-terminal-media",
+        "component-fish",
+        "component-nushell",
+        "component-zsh"
       ],
       "order": 260
     }
@@ -11797,6 +11800,183 @@
         "order": 12
       },
       "criticalSystemCapability": false
+    },
+    {
+      "id": "component-fish",
+      "kind": "component",
+      "name": {
+        "en": "fish shell",
+        "zh_CN": "fish shell"
+      },
+      "description": {
+        "en": "Friendly interactive shell: syntax highlighting, autosuggestions and a rich prompt out of the box.",
+        "zh_CN": "友好的交互式 shell：语法高亮、自动建议与开箱即用的提示符。"
+      },
+      "primaryCategory": "cap-terminal",
+      "tags": [
+        "shell",
+        "terminal"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "fish"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "GPL-2.0-only",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-24"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 18,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 1,
+        "installerVisible": true
+      },
+      "criticalSystemCapability": false
+    },
+    {
+      "id": "component-nushell",
+      "kind": "component",
+      "name": {
+        "en": "Nushell",
+        "zh_CN": "Nushell"
+      },
+      "description": {
+        "en": "Structured-data shell: pipelines operate on typed tables instead of raw text.",
+        "zh_CN": "结构化数据 shell：管道处理的是带类型的表格而不是纯文本。"
+      },
+      "primaryCategory": "cap-terminal",
+      "tags": [
+        "shell",
+        "terminal"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "nushell"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "MIT",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-24"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 210,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 2,
+        "installerVisible": true
+      },
+      "criticalSystemCapability": false
+    },
+    {
+      "id": "component-zsh",
+      "kind": "component",
+      "name": {
+        "en": "Zsh",
+        "zh_CN": "Zsh"
+      },
+      "description": {
+        "en": "POSIX-compatible extended shell with a very large configuration ecosystem.",
+        "zh_CN": "兼容 POSIX 的扩展 shell，配置生态庞大。"
+      },
+      "primaryCategory": "cap-terminal",
+      "tags": [
+        "shell",
+        "terminal"
+      ],
+      "selection": {
+        "mode": "multi"
+      },
+      "provider": "pacman",
+      "artifact": {
+        "type": "package",
+        "ids": [
+          "zsh"
+        ]
+      },
+      "scope": "system",
+      "source": "arch",
+      "license": {
+        "classification": "open-source",
+        "spdx": "MIT",
+        "redistributable": true,
+        "requiresAcceptance": false
+      },
+      "review": {
+        "status": "reviewed",
+        "date": "2026-10-24"
+      },
+      "availability": {
+        "status": "available",
+        "architectures": [
+          "x86_64"
+        ],
+        "networkRequired": true,
+        "offlinePolicy": "online-only",
+        "channel": "default"
+      },
+      "sizeMiB": 7,
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "presentation": {
+        "recommended": false,
+        "defaultSelected": false,
+        "order": 3,
+        "installerVisible": true
+      },
+      "criticalSystemCapability": false
     }
   ],
   "bundles": [
@@ -13337,7 +13517,10 @@
         "required": [],
         "recommended": [],
         "optional": [
-          "component-terminal-media"
+          "component-terminal-media",
+          "component-fish",
+          "component-nushell",
+          "component-zsh"
         ]
       },
       "tags": [
@@ -13547,4 +13730,4 @@
       }
     }
   ]
-}
+}
